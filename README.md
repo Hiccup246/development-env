@@ -7,6 +7,8 @@ ToDo
 - Add shell setup (bash + zsh)
   - Visual setup
   - Functions/Alias's
+  - Zsh [plugins](https://grml.org/zsh/zsh-lovers.html)
+  - Bash config [system](https://starship.rs/)
 - Add homebrew setup
 - Add gui application setup
 - Add script to clone all my repositories
