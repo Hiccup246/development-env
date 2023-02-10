@@ -11,3 +11,4 @@ ToDo
 - Add gui application setup
 - Add script to clone all my repositories
 - Add scripts for version and package managers
+- Add editor setup (vscode plugins)
