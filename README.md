@@ -15,3 +15,7 @@ ToDo
 - Add scripts for version and package managers
 - Add editor setup (vscode plugins)
 - Add git setup
+
+```
+chmod +x homebrew-setup.sh && ./homebrew-setup.sh
+```
