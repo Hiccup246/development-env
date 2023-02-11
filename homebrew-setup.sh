@@ -10,7 +10,6 @@ else
     echo "You already have brew installed."
 fi
 
-
 # Install command line programs
 # Command line utilities
 brew install curl
