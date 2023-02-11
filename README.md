@@ -14,3 +14,4 @@ ToDo
 - Add script to clone all my repositories
 - Add scripts for version and package managers
 - Add editor setup (vscode plugins)
+- Add git setup
