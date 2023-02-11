@@ -15,6 +15,9 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Unhide library folder
 chflags nohidden ~/Library
 
+# Do not add recent apps to dock
+defaults write com.apple.dock show-recents -bool FALSE
+
 # Install Xcode command line tools
 if hash xcode-select; then
     echo "You already have Xcode command line tools installed."
