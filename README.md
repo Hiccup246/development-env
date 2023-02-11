@@ -19,6 +19,9 @@ chmod +x mac-setup.sh && ./mac-setup.sh
   - Functions/Alias's
   - Zsh [plugins](https://grml.org/zsh/zsh-lovers.html)
   - Bash config [system](https://starship.rs/)
+  - Add oh-my-zsh
+  - Add oh-my-zsh fonts
+  - Add code to add time to terminal prompt
 - Make homebrew setup dyanmic for differnent programming languages
 - Add script to clone all my repositories
 - Add scripts for version and package managers
