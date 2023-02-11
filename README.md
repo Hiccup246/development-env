@@ -13,6 +13,15 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 
 <br>
 
+# Inspiration taken from
+- https://github.com/vendasta/setup-new-computer-script
+- https://github.com/donnemartin/dev-setup
+- https://github.com/thomaspoignant/mac-dev-setup
+- https://github.com/thoughtbot/laptop
+- https://github.com/nicolashery/mac-dev-setup
+
+<br>
+
 # ToDo
 - Add shell setup (bash + zsh)
   - Visual setup
