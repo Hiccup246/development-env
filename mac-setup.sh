@@ -15,6 +15,13 @@ defaults write com.apple.finder ShowPathbar -bool true
 # Unhide library folder
 chflags nohidden ~/Library
 
+# Install Xcode command line tools
+if hash xcode-select; then
+    echo "You already have Xcode command line tools installed."
+else
+    xcode-select —-install
+fi
+
 # Install homebrew + install applications + GUI applications
 chmod +x homebrew-setup.sh && ./homebrew-setup.sh
 
