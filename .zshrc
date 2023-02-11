@@ -74,6 +74,7 @@ ZSH_THEME="agnoster"
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -120,3 +121,16 @@ if [ -f '/Users/jameswatt/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/U
 if [ -f '/Users/jameswatt/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jameswatt/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 . /usr/local/opt/asdf/libexec/asdf.sh
+
+prompt_context() {
+  # %{$fg[yellow]%} - sets the foreground color to yellow
+  # [%T] - Is the 24 hour time without seconds
+  # %f - Resets the foreground color to the default
+  # $USER - Is the current user name
+  prompt_segment black default "%{$fg[yellow]%}[%T] %f$USER"
+}
+
+# Print welcome message which is a pre-2022 Kanye West quote
+KANYE_REST_API_RESPONSE=$(curl -s https://api.kanye.rest)
+QUOTE=`echo ${KANYE_REST_API_RESPONSE} | grep -o -E '[^{"quote":].*[^"}]'`
+echo "\"${QUOTE}\" - Kanye West"
