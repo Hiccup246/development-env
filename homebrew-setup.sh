@@ -2,18 +2,21 @@
 # Install homebrew and all packages
 
 # Install homebrew package manager
-if ! hash brew
-then
+if hash brew; then
+    echo "You already have brew installed."
+else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew update
-else
-    echo "You already have brew installed."
 fi
 
 # Install command line programs
 # Command line utilities
 brew install curl
 brew install wget
+
+# Install shells
+brew install bash
+brew install zsh
 
 # Code repostiry
 brew instsall git
