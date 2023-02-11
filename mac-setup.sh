@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Configure mac native applications for development
+# Configure mac native applications for development + run homebrew-setup and appstore-setup scripts
 
 # Enable safari developer settings
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
