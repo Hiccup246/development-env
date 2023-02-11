@@ -39,17 +39,20 @@ brew install asdf
 brew install railway
 
 # Install GUI applications
-brew install --cask spotify
-brew install --cask discord
-brew install --cask visual-studio-code
-brew install --cask google-chrome
-brew install --cask discord
-brew install --cask postman
-brew install --cask firefox
-brew install --cask docker
+# --appdir="/Applications" installs applications for all users
+# --appdir="~/Applications" installs applications for the current user
+
+brew install --cask --appdir="/Applications" spotify
+brew install --cask --appdir="/Applications" discord
+brew install --cask --appdir="/Applications" visual-studio-code
+brew install --cask --appdir="/Applications" google-chrome
+brew install --cask --appdir="/Applications" discord
+brew install --cask --appdir="/Applications" postman
+brew install --cask --appdir="/Applications" firefox
+brew install --cask --appdir="/Applications" docker
 
 if [[ ! -d /Applications/iTerm.app ]]; then
-    brew install --cask iterm2
+    brew install --cask --appdir="/Applications" iterm2
 else
     echo "You already have iTerm2 installed."
 fi
