@@ -38,3 +38,4 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 - Add manual work to readme
   - Manually update vscode terminal fonts
   - Manually set iTerm2 color scheme to solarized dark
+  - Add steps for setting mac default browser
