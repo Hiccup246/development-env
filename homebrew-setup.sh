@@ -34,8 +34,20 @@ brew install node
 brew install mas
 
 # Version managers
-brew install nvm
 brew install asdf
+
+# Programming languages
+brew install ruby
+brew install python
+brew install node
+brew install clojure/tools/clojure
+brew install deno
+brew install python
+
+# Rust setup
+brew install rustup
+rustup-init
+
 
 # Optional installations
 brew install railway
