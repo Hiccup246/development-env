@@ -1,5 +1,12 @@
 #!/bin/zsh
-# Configure mac native applications for development + run homebrew-setup and appstore-setup scripts
+# Run all development environment scripts for mac
+# - native applications for development
+# - run homebrew-setup
+# - run appstore-setup scripts
+# - run git setup
+# - run bash setup
+# - run zsh setup
+
 
 # Enable safari developer settings
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
@@ -30,3 +37,15 @@ chmod +x homebrew-setup.sh && ./homebrew-setup.sh
 
 # Install appstore applications
 chmod +x appstore-setup.sh && ./appstore-setup.sh
+
+# Git setup
+chmod +x git-setup.sh && ./git-setup.sh
+
+# Bash setup
+chmod +x bash-setup.sh && ./bash-setup.sh
+
+# Zsh shell setup
+chmod +x zsh-setup.sh && ./zsh-setup.sh
+
+
+
