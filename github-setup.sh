@@ -1,5 +1,6 @@
 #!/bin/zsh
 # Download all public, non-archived, non-forked github repos for a github user into the current directory
+# Inspiration taken from https://gist.github.com/santoshphegde/218e26317327f9c5aa9791ad767c1b3e
 
 # Configure github user to clone repos from
 read -r -p "Do you want to clone all public, non-archived, non-forked repos from a github user? [y/N] " response
