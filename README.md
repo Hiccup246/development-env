@@ -32,6 +32,8 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 - Add script to clone all my repositories
 - Add scripts for version and package managers
 - Add editor setup (vscode plugins)
+  - Add `code` command to path
+  - Install plugins via this [method](https://stackoverflow.com/questions/34286515/how-to-install-visual-studio-code-extensions-from-command-line)
 - Add git setup
 - Add manual work to readme
   - Manually update vscode terminal fonts
