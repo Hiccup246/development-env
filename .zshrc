@@ -136,4 +136,8 @@ prompt_context() {
 # Print welcome message which is a pre-2022 Kanye West quote
 KANYE_REST_API_RESPONSE=$(curl -s https://api.kanye.rest)
 QUOTE=`echo ${KANYE_REST_API_RESPONSE} | grep -o -E '[^{"quote":].*[^"}]'`
-echo "\"${QUOTE}\" - Kanye West"
+if [ $QUOTE ]; then
+  echo "\"${QUOTE}\" - Kanye West"
+else
+  echo "No internet to grab quotes from"
+fi
