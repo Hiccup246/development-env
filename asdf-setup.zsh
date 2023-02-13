@@ -1,6 +1,9 @@
 #!/bin/zsh
 # Install programming languages using asdf
 
+# Add .asdfrc to user home directory
+cp .asdfrc ~/
+
 # https://github.com/asdf-community/asdf-python
 # Prerequisites
 brew install openssl readline sqlite3 xz zlib tcl-tk
