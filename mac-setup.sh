@@ -47,5 +47,12 @@ chmod +x bash-setup.sh && ./bash-setup.sh
 # Zsh shell setup
 chmod +x zsh-setup.sh && ./zsh-setup.sh
 
+# Asdf program installation
+chmod +x asdf-setup.sh && ./asdf-setup.sh
+
+# VScode generic setup
+chmod +x vscode-setup.sh && ./vscode-setup.sh
+
+
 
 
