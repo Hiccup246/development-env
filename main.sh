@@ -17,7 +17,8 @@ while true; do
                 break
                 ;;
             2) 
-                echo "Selected item #$REPLY which means $item";
+                chmod +x ssh-setup.sh && ./ssh-setup.sh               
+                echo ""
                 break
                 ;;
             3) 
