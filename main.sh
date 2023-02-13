@@ -13,7 +13,8 @@ while true; do
     do
         case $REPLY in
             1)
-                echo "Selected item #$REPLY which means $item";
+                echo ""
+                chmod +x mac-setup.sh && ./mac-setup.sh  
                 break
                 ;;
             2) 
