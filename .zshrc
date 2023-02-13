@@ -62,6 +62,9 @@ ZSH_THEME="agnoster"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+# Homebrew completions https://docs.brew.sh/Shell-Completion#configuring-completions-in-bash
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
