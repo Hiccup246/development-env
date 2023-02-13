@@ -44,7 +44,6 @@ brew install python
 brew install rustup
 rustup-init
 
-
 # Optional installations
 brew install railway
 
