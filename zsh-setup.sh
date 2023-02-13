@@ -1,6 +1,9 @@
 #!/bin/zsh
 # Configuration for zsh shell based on zsh shell config found in .zshrc
 
+# Add .zshrc to user home directory
+cp .zshrc ~/
+
 # Add homebrew zsh (as oppose to system zsh) to list of viable shells
 sudo sh -c 'echo /usr/local/bin/zsh >> /etc/shells'
 
