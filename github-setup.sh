@@ -3,8 +3,8 @@
 # Inspiration taken from https://gist.github.com/santoshphegde/218e26317327f9c5aa9791ad767c1b3e
 
 clone_user_repos() {
-    read 'githubUser?Enter the github user name you want to clone repos from: '
-    response=$(curl -s -f "https://api.github.com/users/${githubUser}/repos")
+    read 'github_user?Enter the github user name you want to clone repos from: '
+    response=$(curl -s -f "https://api.github.com/users/${github_user}/repos")
 
     if (($?)); then
         echo "Request to github failed. Did you enter the correct github user?"
@@ -14,19 +14,19 @@ clone_user_repos() {
             echo ""
         done
 
-        echo "✔ Cloning of all repos from ${githubUser} complete"
+        echo "✔ Cloning of all repos from ${github_user} complete"
     fi
 }
 
 # Core github setup loop
-ANSWER=0
+answer=0
 
-while ((!$ANSWER)); do
+while ((!$answer)); do
     read -q "?Do you want to clone all public, non-archived, non-forked repos from a github user? [y/n] "
-    ANSWER=$?
+    answer=$?
     echo ""
 
-    if ((!$ANSWER)); then
+    if ((!$answer)); then
         clone_user_repos
     fi
 done
