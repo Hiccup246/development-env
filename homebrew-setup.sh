@@ -14,7 +14,7 @@ fi
 brew install curl
 brew install wget
 
-# Install shells
+# Shells
 brew install bash
 brew install zsh
 
@@ -32,25 +32,12 @@ brew install mas
 # Version managers
 brew install asdf
 
-# Programming languages
-brew install ruby
-brew install python
-brew install node
-brew install clojure/tools/clojure
-brew install deno
-brew install python
-
-# Rust setup
-brew install rustup
-rustup-init
-
 # Optional installations
 brew install railway
 
 # Install GUI applications
 # --appdir="/Applications" installs applications for all users
 # --appdir="~/Applications" installs applications for the current user
-
 brew install --cask --appdir="/Applications" spotify
 brew install --cask --appdir="/Applications" discord
 brew install --cask --appdir="/Applications" visual-studio-code
