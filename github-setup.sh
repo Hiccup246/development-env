@@ -29,8 +29,6 @@ while ((!$ANSWER)); do
     if ((!$ANSWER)); then
         clone_user_repos
     fi
-
-    echo ""
 done
 
 echo "\nEnd of github setup, returning to main menu..."
