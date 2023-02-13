@@ -17,8 +17,8 @@ while true; do
                 break
                 ;;
             2) 
-                chmod +x ssh-setup.sh && ./ssh-setup.sh               
                 echo ""
+                chmod +x ssh-setup.sh && ./ssh-setup.sh               
                 break
                 ;;
             3) 
