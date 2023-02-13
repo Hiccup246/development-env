@@ -6,7 +6,7 @@ echo "===Welcome to Hiccup246 development environment setup program==="
 COLUMNS=12
 PS3="Select item please: "
 
-items=("Run entire mac setup" "Configure ssh keys" "Configure global github info" "Clone repos from github user")
+items=("Run entire mac setup" "Configure ssh keys" "Configure global git info" "Clone repos from github user")
 start_loading_spinner
 while true; do
     select item in "${items[@]}" Quit
@@ -21,7 +21,7 @@ while true; do
                 break
                 ;;
             3) 
-                echo "Selected item #$REPLY which means $item";
+                chmod +x git-setup.sh && ./git-setup.sh
                 break
                 ;;
             4) 
