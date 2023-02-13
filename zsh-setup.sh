@@ -28,3 +28,5 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
+
+echo "✔ Zsh shell installed and configured"
