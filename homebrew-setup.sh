@@ -26,10 +26,6 @@ brew install pnpm
 brew install npm
 brew install pip
 
-# Run time environments
-brew install deno
-brew install node
-
 # GUI Application installer
 brew install mas
 
