@@ -21,10 +21,12 @@ while true; do
                 break
                 ;;
             3) 
+                echo ""
                 chmod +x git-setup.sh && ./git-setup.sh
                 break
                 ;;
             4) 
+                echo ""
                 chmod +x github-setup.sh && ./github-setup.sh
                 break
                 ;;
