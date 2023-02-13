@@ -74,4 +74,4 @@ fi
 
 echo ""
 echo ""
-echo "Git global info configured..."
+echo "✔ Git global info configured"
