@@ -67,3 +67,5 @@ asdf global deno latest
 # Plugin installation
 asdf plugin-add direnv
 asdf direnv setup --shell zsh --version latest
+
+echo "✔ Asdf and programming languages installed"
