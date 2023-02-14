@@ -20,7 +20,8 @@ install_python() {
     brew install openssl readline sqlite3 xz zlib tcl-tk
     # Plugin installation
     asdf plugin-add python
-    asdf global python latest
+    asdf install python latest
+	asdf global python latest
 
     echo "✔ Python installed"
 }
@@ -33,7 +34,8 @@ install_node() {
     # - Xcode command line tools
     # Plugin installation
     asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-    asdf global nodejs latest
+    asdf install nodejs latest
+	asdf global nodejs latest
 
     echo "✔ Node.js installed"
 }
@@ -46,7 +48,8 @@ install_ruby() {
     # - Xcode command line tools
     # Plugin installation
     asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-    asdf global ruby latest
+    asdf install ruby latest
+	asdf global ruby latest
 
     echo "✔ Ruby installed"
 }
@@ -60,7 +63,8 @@ install_java() {
     brew install jq
     # Plugin installation
     asdf plugin-add java https://github.com/halcyon/asdf-java.git
-    asdf global java latest
+    asdf install java latest
+	asdf global java latest
 
     echo "✔ Java installed"
 }
@@ -77,7 +81,8 @@ install_clojure() {
     brew install rlwrap
     # Plugin installation
     asdf plugin add clojure https://github.com/asdf-community/asdf-clojure.git
-    asdf global clojure latest
+    asdf install clojure latest
+	asdf global clojure latest
 
     echo "✔ Clojure installed"
 }
@@ -90,7 +95,8 @@ install_rust() {
     # - None
     # Plugin installation
     asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
-    asdf global rust latest
+    asdf install rust latest
+	asdf global rust latest
 
     echo "✔ Rust installed"
 }
@@ -106,7 +112,8 @@ install_deno() {
     # - gunzip (i am ignoring this dependancy)
     # Plugin installation
     asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git
-    asdf global deno latest
+    asdf install deno latest
+	asdf global deno latest
 
     echo "✔ Rust installed"
 }
@@ -114,10 +121,13 @@ install_deno() {
 install_go() {
 	# https://github.com/kennyp/asdf-golang
 	# Prerequisites
-	# - None
+	brew install coreutils
 	# Plugin installation
 	asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
-	asdf global go latest
+	asdf install golang latest
+	asdf global golang latest
+
+	echo "✔ Go installed"
 }
 
 install_direnv() {
