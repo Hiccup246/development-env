@@ -7,6 +7,7 @@ if hash brew; then
 else
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     brew update
+    echo "✔ Homebrew installed and updated"
 fi
 
 # Install command line programs
@@ -52,3 +53,5 @@ if [[ ! -d /Applications/iTerm.app ]]; then
 else
     echo "You already have iTerm2 installed."
 fi
+
+echo "✔ Homebrew packages installed"
