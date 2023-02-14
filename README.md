@@ -77,3 +77,4 @@ To perform development on this project you must:
 - Review `.zshrc` file
 - Implement interactive menus with arrow key selection for multi select and single select menus
 - Implement a loading spinner for installation commands
+- Complete all readme sections
