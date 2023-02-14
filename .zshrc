@@ -134,11 +134,41 @@ prompt_context() {
   prompt_segment black default "%{$fg[yellow]%}[%T] %f$USER"
 }
 
-# Print welcome message which is a pre-2022 Kanye West quote
-KANYE_REST_API_RESPONSE=$(curl -s https://api.kanye.rest)
-QUOTE=`echo ${KANYE_REST_API_RESPONSE} | grep -o -E '[^{"quote":].*[^"}]'`
-if [ $QUOTE ]; then
-  echo "\"${QUOTE}\" - Kanye West"
+kanye_welcome_message() {
+  # Print welcome message which is a pre-2022 Kanye West quote
+  KANYE_REST_API_RESPONSE=$(curl -s https://api.kanye.rest)
+  QUOTE=`echo ${KANYE_REST_API_RESPONSE} | grep -o -E '[^{"quote":].*[^"}]'`
+  if [ $QUOTE ]; then
+    echo "\"${QUOTE}\" - Kanye West"
+  else
+    echo "No internet to grab quotes from"
+  fi
+}
+
+npm_welcome_message() {
+  npm_expansions_file=$(curl -s https://raw.githubusercontent.com/npm/npm-expansions/master/expansions.txt)
+  npm_expansions_arr=(${(@f)"${npm_expansions_file}"})
+  number_of_lines=${#npm_expansions_arr[@]}
+  # Ignore first line
+  starting_comments=1
+  # Ignore last 5 lines
+  ending_comments=5
+
+  if (($number_of_lines == 0)); then
+    echo "No internet to grab quotes from"
+  else
+    start_index=$((1+$starting_comments))
+    end_index=$(($number_of_lines-$ending_comments))
+
+    selected_expansion_index=$(shuf -i $start_index-$end_index -n 1)
+    selected_expansion=$npm_expansions_arr[$selected_expansion_index]
+    echo "${selected_expansion} - NPM"
+  fi
+}
+
+welcome_message_percentage=$(shuf -i 1-10 -n 1)
+if (($welcome_message_percentage <= 2)); then
+  echo $(npm_welcome_message)
 else
-  echo "No internet to grab quotes from"
+  echo $(kanye_welcome_message)
 fi
