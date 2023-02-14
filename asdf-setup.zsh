@@ -10,6 +10,7 @@ echo "- Java"
 echo "- Clojure"
 echo "- Rust"
 echo "- Deno"
+echo "- Go"
 
 install_python() {
     echo "Installing Python..."
@@ -110,6 +111,15 @@ install_deno() {
     echo "✔ Rust installed"
 }
 
+install_go() {
+	# https://github.com/kennyp/asdf-golang
+	# Prerequisites
+	# - None
+	# Plugin installation
+	asdf plugin-add golang https://github.com/kennyp/asdf-golang.git
+	asdf global go latest
+}
+
 install_direnv() {
     echo "Installing direnv for environment loading..."
 
@@ -176,10 +186,17 @@ pick_programs_to_install() {
         programs_to_install+=install_deno
     fi
 
+	echo ""
+
+	read -q "?Do you want to install Go? [y/n]"
+    if ((!$?)); then
+        programs_to_install+=install_go
+    fi
+
     echo ""
 
     install_direnv
-    
+
     for program in "${programs_to_install[@]}"; do
         $program
     done
@@ -205,6 +222,7 @@ else
     install_clojure
     install_rust
     install_deno
+	install_go
 fi
 
 echo ""
