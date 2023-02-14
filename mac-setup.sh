@@ -32,11 +32,11 @@ echo "✔ Apple doc and directory configuration complete"
 
 # Install Xcode command line tools
 if hash xcode-select; then
-    echo "You already have Xcode command line tools installed."
+	echo "You already have Xcode command line tools installed."
 else
-    echo "Installing Xcode command line tools..."
-    xcode-select —-install
-    echo "✔ Xcode install complete"
+	echo "Installing Xcode command line tools..."
+	xcode-select —-install
+	echo "✔ Xcode install complete"
 fi
 
 # Install homebrew + install applications + GUI applications
@@ -62,6 +62,3 @@ chmod +x vscode-setup.sh && ./vscode-setup.sh
 
 echo ""
 echo "✔ Mac setup complete"
-
-
-
