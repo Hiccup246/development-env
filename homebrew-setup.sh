@@ -14,6 +14,7 @@ fi
 # Command line utilities
 brew install curl
 brew install wget
+brew install coreutils
 
 # Shells
 brew install bash
