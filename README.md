@@ -13,6 +13,16 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 
 <br>
 
+# Manual Configuration
+- Update iTerm2 color scheme to solarized dark
+- Manually set vscode terminal adding the following line to vscodes JSON settings
+  `"terminal.integrated.fontFamily": "Source Code Pro for Powerline"`
+- Set Mac default browser to be Chrome
+- Update Flycut to save a larger history
+- Install Bitwarden, Wappalyzer and AdBlock chrome extensions
+
+<br>
+
 # Inspiration taken from
 - https://github.com/vendasta/setup-new-computer-script
 - https://github.com/donnemartin/dev-setup
@@ -26,15 +36,10 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 - Add shell setup (bash + zsh)
   - Functions/Alias's
   - Bash config [system](https://starship.rs/)
-- Add editor setup (vscode plugins)
+- Add editor setup
   - Add `code` command to path
   - export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-- Add manual work to readme
-  - Manually update vscode terminal fonts
-  - Manually set iTerm2 color scheme to solarized dark
-  - Add steps for setting mac default browser
 - Review .zshrc file
-- Add .editorconfig file
 - Add bash/zsh shell linting and formatting
 - Update readme to be more polished
-- Add Flycut config (history length + activation keys)
+- Add npm acronyms to shell start up message with maybe a 10% chance
