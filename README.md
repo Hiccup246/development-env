@@ -24,18 +24,17 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 
 # ToDo
 - Add shell setup (bash + zsh)
-  - Visual setup
   - Functions/Alias's
-  - Zsh [plugins](https://grml.org/zsh/zsh-lovers.html)
   - Bash config [system](https://starship.rs/)
 - Make homebrew setup dyanmic for differnent programming languages
-- Add script to clone all my repositories
-- Add scripts for version and package managers
 - Add editor setup (vscode plugins)
   - Add `code` command to path
-  - Install plugins via this [method](https://stackoverflow.com/questions/34286515/how-to-install-visual-studio-code-extensions-from-command-line)
-- Add git setup
+  - export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 - Add manual work to readme
   - Manually update vscode terminal fonts
   - Manually set iTerm2 color scheme to solarized dark
   - Add steps for setting mac default browser
+- Review .zshrc file
+- Add editorconfig file
+- Add bash/zsh shell linting and formatting
+- Update readme to be more polished
