@@ -38,3 +38,4 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 - Add editorconfig file
 - Add bash/zsh shell linting and formatting
 - Update readme to be more polished
+- Add Flycut config (history length + activation keys)
