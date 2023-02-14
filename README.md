@@ -26,7 +26,6 @@ chmod +x mac-setup.sh && ./mac-setup.sh
 - Add shell setup (bash + zsh)
   - Functions/Alias's
   - Bash config [system](https://starship.rs/)
-- Make homebrew setup dyanmic for differnent programming languages
 - Add editor setup (vscode plugins)
   - Add `code` command to path
   - export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -35,7 +34,7 @@ chmod +x mac-setup.sh && ./mac-setup.sh
   - Manually set iTerm2 color scheme to solarized dark
   - Add steps for setting mac default browser
 - Review .zshrc file
-- Add editorconfig file
+- Add .editorconfig file
 - Add bash/zsh shell linting and formatting
 - Update readme to be more polished
 - Add Flycut config (history length + activation keys)
