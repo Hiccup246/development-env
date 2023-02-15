@@ -107,6 +107,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias gs="git status"
 alias gammend="git commit --amend --no-edit"
+alias pn=pnpm
 
 # To load NVM
 export NVM_DIR="$HOME/.nvm"
