@@ -10,10 +10,24 @@ A place for my personal Macintosh development environment setup scripts
 This repository contains various scripts written in `zsh` shell that configure a mac based development environment. By running the main script you are presented with 5 key setup options which are described below. All the configuration options are listed at the end of this readme in a [index](#Index-of-all-configurations).
 
 ## Run entire mac setup
+1. Configures safari, finder, doc and default directories
+2. Installs Xcode command line tools
+3. Installs all homebrew packages
+4. Installs all homebrew GUI packages
+5. Install mac appstore applications
+6. Configures git global config
+7. Adds homebrew `bash` (mac comes with a old version) to system shells
+8. Sets up and configures `zsh` shell
+9. Sets up and configures programming languages via `asdf`
+10. Configures some generic Vscode plugins
 ## Configure ssh keys
+- Allows you to configure global and/or local ssh keys
 ## Configure global git info
+- Allows you to configure global git info
 ## Clone repos from github user
+- Allows you to clone all public, non-forked, non-archived git repos from a given user
 ## Quit
+- Allows you to quit the main menu
 
 <br>
 
