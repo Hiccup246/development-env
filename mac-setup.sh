@@ -6,6 +6,8 @@
 # - run git setup
 # - run bash setup
 # - run zsh setup
+# - run asdf setup
+# - run vscode setup
 
 echo "Beginning mac setup..."
 
