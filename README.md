@@ -72,6 +72,66 @@ To perform development on this project you must:
 
 <br>
 
+# Index of all configurations
+## Homebrew packages
+- curl
+- wget
+- coreutils
+- bash
+- zsh 
+- git
+- pnpm
+- npm
+- pip
+- mas
+- asdf
+- railway
+
+## Homebrew cask packages
+- Spotify
+- Discord
+- Vscode
+- Google chrome
+- Postman
+- Firefox
+- Docker
+- iTerm2
+
+## Mac appstore installtions
+- Flycut
+- Bitwarden
+
+## Zsh configuration
+- `zsh-autosuggestions` plugin
+- `zsh-syntax-highlighting` plugin
+- `zsh-completions` plugin
+- Powerline fonts
+
+## Asdf configuration
+- Direnv
+- Python
+- Node.js
+- Ruby
+- Java
+- Clojure
+- Rust
+- Deno
+- Go
+
+## Vscode plugins
+- Dotenv
+- Editorconfig
+
+## Mac setup
+- Sets safari debug menu
+- Sets safari development menu
+- Sets safari webkit development extras
+- Sets finder to show path and status bar
+- Unhides the library directory
+- Sets mac doc to not display recent apps
+
+<br>
+
 # Inspiration taken from
 - https://github.com/vendasta/setup-new-computer-script
 - https://github.com/donnemartin/dev-setup
@@ -82,13 +142,6 @@ To perform development on this project you must:
 
 <br>
 
-# Index of all configurations
-
-<br>
-
 # ToDo
-- Add more functions/alias's to `.zshrc`
-- Review `.zshrc` file
 - Implement interactive menus with arrow key selection for multi select and single select menus
 - Implement a loading spinner for installation commands
-- Complete all readme sections
