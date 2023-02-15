@@ -44,7 +44,6 @@ brew install --cask --appdir="/Applications" spotify
 brew install --cask --appdir="/Applications" discord
 brew install --cask --appdir="/Applications" visual-studio-code
 brew install --cask --appdir="/Applications" google-chrome
-brew install --cask --appdir="/Applications" discord
 brew install --cask --appdir="/Applications" postman
 brew install --cask --appdir="/Applications" firefox
 brew install --cask --appdir="/Applications" docker
