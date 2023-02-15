@@ -9,7 +9,7 @@ A place for my personal Macintosh development environment setup scripts
 
 This repository contains various scripts written in `zsh` shell that configure a mac based development environment. By running the main script you are presented with 5 key setup options which are described below. All the configuration options are listed at the end of this readme in a [index](#Index-of-all-configurations).
 
-## Run entire mac setup
+## 💻 Run entire mac setup
 1. Configures safari, finder, doc and default directories
 2. Installs Xcode command line tools
 3. Installs all homebrew packages
@@ -31,7 +31,7 @@ This repository contains various scripts written in `zsh` shell that configure a
 
 <br>
 
-# Usage
+# 🕹️ Usage
 To run the installation script you must:
 1. Clone this repository
 2. Run the following command to start the main script
@@ -41,7 +41,7 @@ To run the installation script you must:
 
 <br>
 
-# Manual Configuration
+# ✍️ Manual Configuration
 Unfortunatley some configuration cannot be done automatically or is more effective when done manually. The following configuration should be done manually:
 - Update iTerm2 color scheme to solarized dark
 - Manually set vscode terminal font by adding the following line to vscodes JSON settings
@@ -55,7 +55,7 @@ Unfortunatley some configuration cannot be done automatically or is more effecti
 
 <br>
 
-# Development
+# 👷 Development
 To perform development on this project you must:
 1. Clone this project
 2. Install [`shfmt`](https://github.com/mvdan/sh) shell formatter by running the following command from [webinstall](https://webinstall.dev/shfmt/)
@@ -73,7 +73,7 @@ To perform development on this project you must:
 
 <br>
 
-# Index of all configurations
+# 🗂️ Index of all configurations
 ## Homebrew packages
 - curl
 - wget
@@ -133,7 +133,7 @@ To perform development on this project you must:
 
 <br>
 
-# Inspiration taken from
+# 💡 Inspiration taken from
 - https://github.com/vendasta/setup-new-computer-script
 - https://github.com/donnemartin/dev-setup
 - https://github.com/thomaspoignant/mac-dev-setup
@@ -143,6 +143,6 @@ To perform development on this project you must:
 
 <br>
 
-# ToDo
+# 🤔 ToDo
 - Implement interactive menus with arrow key selection for multi select and single select menus
 - Implement a loading spinner for installation commands
