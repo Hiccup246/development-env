@@ -7,9 +7,9 @@ A place for my personal Macintosh development environment setup scripts
 ![program-main-menu-screenshot](https://raw.githubusercontent.com/Hiccup246/development-env/main/program-main-menu-screenshot.webp)
 
 
-This repository contains various scripts written in `zsh` shell that configure a mac based development environment. By running the main script you are presented with 5 key setup options which are described below. All the configuration options are listed at the end of this readme in a [index](#Index-of-all-configurations).
+This repository contains various scripts written in `zsh` shell that configure a mac based development environment. By running the main script you are presented with 5 key setup options which are described below. All the configuration options are listed at the end of this readme in a [index](#🗂️-Index-of-all-configurations).
 
-## 💻 Run entire mac setup
+## Run entire mac setup
 1. Configures safari, finder, doc and default directories
 2. Installs Xcode command line tools
 3. Installs all homebrew packages
