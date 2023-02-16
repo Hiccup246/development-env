@@ -11,14 +11,14 @@ else
 fi
 
 # Install command line programs
+# Shells
+brew install zsh
+brew install bash
+
 # Command line utilities
 brew install curl
 brew install wget
 brew install coreutils
-
-# Shells
-brew install bash
-brew install zsh
 
 # Code repostiry
 brew instsall git
@@ -26,7 +26,6 @@ brew instsall git
 # Package managers
 brew install pnpm
 brew install npm
-brew install pip
 
 # GUI Application installer
 brew install mas
