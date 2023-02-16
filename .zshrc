@@ -4,6 +4,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+# Add Visual Studio Code (code)
+export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -74,10 +77,11 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting must come at the end
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git asdf zsh-autosuggestions zsh-syntax-highlighting)
 
+# https://github.com/zsh-users/zsh-completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-autoload -U compinit && compinit
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -103,30 +107,11 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="code ~/.zshrc"
+alias ohmyzsh="code ~/.oh-my-zsh"
 alias gs="git status"
 alias gammend="git commit --amend --no-edit"
 alias pn=pnpm
-
-# To load NVM
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
-# pnpm
-export PNPM_HOME="/Users/jameswatt/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jameswatt/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jameswatt/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jameswatt/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jameswatt/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
-. /usr/local/opt/asdf/libexec/asdf.sh
 
 prompt_context() {
   # %{$fg[yellow]%} - sets the foreground color to yellow
@@ -137,12 +122,12 @@ prompt_context() {
 }
 
 update_and_upgrade() {
-    echo "Start updating and upgrading. This may take a while"
-    omz update
-    echo "****************************************************************"
-    echo "brew..."
-    brew update --verbose && brew upgrade && brew cleanup
-    echo "****************************************************************"
+  echo "Start updating and upgrading. This may take a while"
+  omz update
+  echo "****************************************************************"
+  echo "brew..."
+  brew update --verbose && brew upgrade && brew cleanup
+  echo "****************************************************************"
 }
 
 kanye_welcome_message() {
