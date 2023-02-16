@@ -44,17 +44,17 @@ fi
 # Install homebrew + install applications + GUI applications
 chmod +x homebrew-setup.sh && ./homebrew-setup.sh
 
-# Install appstore applications
-chmod +x appstore-setup.sh && ./appstore-setup.sh
-
-# Git setup
-chmod +x git-setup.sh && ./git-setup.sh
-
 # Bash setup
 chmod +x bash-setup.sh && ./bash-setup.sh
 
 # Zsh shell setup
 chmod +x zsh-setup.sh && ./zsh-setup.sh
+
+# Install appstore applications
+chmod +x appstore-setup.sh && ./appstore-setup.sh
+
+# Git setup
+chmod +x git-setup.sh && ./git-setup.sh
 
 # Asdf program installation
 chmod +x asdf-setup.sh && ./asdf-setup.sh
