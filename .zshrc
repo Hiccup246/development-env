@@ -136,6 +136,15 @@ prompt_context() {
   prompt_segment black default "%{$fg[yellow]%}[%T] %f$USER"
 }
 
+update_and_upgrade() {
+    echo "Start updating and upgrading. This may take a while"
+    omz update
+    echo "****************************************************************"
+    echo "brew..."
+    brew update --verbose && brew upgrade && brew cleanup
+    echo "****************************************************************"
+}
+
 kanye_welcome_message() {
   # Print welcome message which is a pre-2022 Kanye West quote
   KANYE_REST_API_RESPONSE=$(curl -s https://api.kanye.rest)
