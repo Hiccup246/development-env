@@ -44,6 +44,11 @@ To run the installation script you must:
 # ✍️ Manual Configuration
 Unfortunatley some configuration cannot be done automatically or is more effective when done manually. The following configuration should be done manually:
 - Update iTerm2 color scheme to solarized dark
+- Update iTerm2 fonts to use installed powerline fonts
+- If zsh-autosuggestions are not showing edit the suggestions text color
+  ```
+  Basic Colors > Background and ANSI Colors > Bright Black are different
+  ```
 - Manually set vscode terminal font by adding the following line to vscodes JSON settings
   ```json
   "terminal.integrated.fontFamily": "Source Code Pro for Powerline"
