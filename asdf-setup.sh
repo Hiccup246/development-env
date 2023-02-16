@@ -115,7 +115,7 @@ install_deno() {
 	asdf install deno latest
 	asdf global deno latest
 
-	echo "✔ Rust installed"
+	echo "✔ Deno installed"
 }
 
 install_go() {
