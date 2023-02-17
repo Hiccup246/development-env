@@ -57,6 +57,7 @@ Unfortunatley some configuration cannot be done automatically or is more effecti
 - Update Flycut to save a larger clipboard history
 - Install Bitwarden, Wappalyzer and AdBlock Google Chrome extensions
    - Optionally install ColorPick Eyedropper or Ultimate Color Picker extensions
+- Setup mac email accounts
 
 <br>
 
