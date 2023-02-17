@@ -14,9 +14,9 @@ This repository contains various scripts written in `zsh` shell that configure a
 2. Installs Xcode command line tools
 3. Installs all homebrew packages
 4. Installs all homebrew GUI packages
-5. Install mac appstore applications
+5. Install mac app store applications
 6. Configures git global config
-7. Adds homebrew `bash` (mac comes with a old version) to system shells
+7. Adds homebrew `bash` (mac comes with an old version) to system shells
 8. Sets up and configures `zsh` shell
 9. Sets up and configures programming languages via `asdf`
 10. Configures some generic Vscode plugins
@@ -42,7 +42,7 @@ To run the installation script you must:
 <br>
 
 # ✍️ Manual Configuration
-Unfortunatley some configuration cannot be done automatically or is more effective when done manually. The following configuration should be done manually:
+Unfortunately, some configuration cannot be done automatically or is more effective when done manually. The following configuration should be done manually:
 - Update iTerm2 color scheme to solarized dark
 - Update iTerm2 fonts to use installed powerline fonts
 - If zsh-autosuggestions are not showing edit the suggestions text color
@@ -98,7 +98,7 @@ To perform development on this project you must:
 - Spotify
 - Discord
 - Vscode
-- Google chrome
+- Google Chrome
 - Postman
 - Firefox
 - Docker
@@ -150,5 +150,5 @@ To perform development on this project you must:
 <br>
 
 # 🤔 ToDo
-- Implement interactive menus with arrow key selection for multi select and single select menus
+- Implement interactive menus with arrow key selection for multi-select and single select menus
 - Implement a loading spinner for installation commands
