@@ -32,6 +32,7 @@ brew install mas
 
 # Version managers
 brew install asdf
+brew install rustup-init
 
 # Optional installations
 brew install railway

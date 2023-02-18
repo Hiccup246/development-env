@@ -59,6 +59,11 @@ chmod +x git-setup.sh && ./git-setup.sh
 # Asdf program installation
 chmod +x asdf-setup.sh && ./asdf-setup.sh
 
+read -q "?Do you want to install Rust using rustup? [y/n]"
+if ((!$?)); then
+	rustup-init
+fi
+
 # VScode generic setup
 chmod +x vscode-setup.sh && ./vscode-setup.sh
 
