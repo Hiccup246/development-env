@@ -8,7 +8,6 @@ echo "- Node.js"
 echo "- Ruby"
 echo "- Java"
 echo "- Clojure"
-echo "- Rust"
 echo "- Deno"
 echo "- Go"
 
@@ -85,20 +84,6 @@ install_clojure() {
 	asdf global clojure latest
 
 	echo "✔ Clojure installed"
-}
-
-install_rust() {
-	echo "Installing Rust..."
-
-	# https://github.com/asdf-community/asdf-rust
-	# Prerequisites
-	# - None
-	# Plugin installation
-	asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
-	asdf install rust latest
-	asdf global rust latest
-
-	echo "✔ Rust installed"
 }
 
 install_deno() {
@@ -182,13 +167,6 @@ pick_programs_to_install() {
 
 	echo ""
 
-	read -q "?Do you want to install Rust? [y/n]"
-	if ((!$?)); then
-		programs_to_install+=install_rust
-	fi
-
-	echo ""
-
 	read -q "?Do you want to install Deno? [y/n]"
 	if ((!$?)); then
 		programs_to_install+=install_deno
@@ -228,7 +206,6 @@ else
 	install_ruby
 	install_java
 	install_clojure
-	install_rust
 	install_deno
 	install_go
 fi

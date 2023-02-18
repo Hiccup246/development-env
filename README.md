@@ -121,7 +121,6 @@ To perform development on this project you must:
 - Ruby
 - Java
 - Clojure
-- Rust
 - Deno
 - Go
 
