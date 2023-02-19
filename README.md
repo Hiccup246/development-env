@@ -19,7 +19,8 @@ This repository contains various scripts written in `zsh` shell that configure a
 7. Adds homebrew `bash` (mac comes with an old version) to system shells
 8. Sets up and configures `zsh` shell
 9. Sets up and configures programming languages via `asdf`
-10. Configures some generic Vscode plugins
+10. Sets up and configures the `rust` programming language via `rustup`
+11. Configures some generic Vscode plugins
 ## Configure ssh keys
 - Allows you to configure global and/or local ssh keys
 ## Configure global git info
@@ -92,6 +93,7 @@ To perform development on this project you must:
 - pip
 - mas
 - asdf
+- rustup-init
 - railway
 
 ## Homebrew cask packages
