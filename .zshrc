@@ -84,6 +84,9 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
 source $ZSH/oh-my-zsh.sh
 
+# Source cargo for rust commands
+source "$HOME/.cargo/env"
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
