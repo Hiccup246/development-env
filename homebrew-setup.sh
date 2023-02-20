@@ -40,18 +40,23 @@ brew install railway
 # Install GUI applications
 # --appdir="/Applications" installs applications for all users
 # --appdir="~/Applications" installs applications for the current user
-brew install --cask --appdir="/Applications" spotify
-brew install --cask --appdir="/Applications" discord
-brew install --cask --appdir="/Applications" visual-studio-code
-brew install --cask --appdir="/Applications" google-chrome
-brew install --cask --appdir="/Applications" postman
-brew install --cask --appdir="/Applications" firefox
-brew install --cask --appdir="/Applications" docker
 
-if [[ ! -d /Applications/iTerm.app ]]; then
-	brew install --cask --appdir="/Applications" iterm2
-else
-	echo "You already have iTerm2 installed."
+read -q "?Do you want to install desktop GUI applications using homebrew? [y/n]"
+if ((!$?)); then
+	brew install --cask --appdir="/Applications" spotify
+	brew install --cask --appdir="/Applications" discord
+	brew install --cask --appdir="/Applications" visual-studio-code
+	brew install --cask --appdir="/Applications" google-chrome
+	brew install --cask --appdir="/Applications" postman
+	brew install --cask --appdir="/Applications" firefox
+	brew install --cask --appdir="/Applications" docker
+
+	if [[ ! -d /Applications/iTerm.app ]]; then
+		brew install --cask --appdir="/Applications" iterm2
+	else
+		echo "You already have iTerm2 installed."
+	fi
 fi
 
+echo ""
 echo "✔ Homebrew packages installed"
