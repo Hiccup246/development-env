@@ -7,6 +7,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # Add Visual Studio Code (code)
 export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
+# Path to common utilities
+export PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
