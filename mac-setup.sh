@@ -66,5 +66,9 @@ chmod +x rustup-setup.sh && ./rustup-setup.sh
 # VScode generic setup
 chmod +x vscode-setup.sh && ./vscode-setup.sh
 
+# Set shell to zsh (In case bash installation set it to bash)
+echo "Setting shell to zsh..."
+chsh -s /bin/zsh
+
 echo ""
 echo "✔ Mac setup complete"
