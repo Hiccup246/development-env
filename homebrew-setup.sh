@@ -21,7 +21,7 @@ brew install wget
 brew install coreutils
 
 # Code repostiry
-brew instsall git
+brew install git
 
 # Package managers
 brew install pnpm
