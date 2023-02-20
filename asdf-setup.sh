@@ -1,7 +1,7 @@
 #!/bin/zsh
 # Install programming languages using asdf
 
-echo "===Welcome to program installation==="
+echo "===Welcome to ASDF program installation==="
 echo "Available program/run times are:"
 echo "- Python"
 echo "- Node.js"
