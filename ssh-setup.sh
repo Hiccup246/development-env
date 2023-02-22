@@ -14,7 +14,7 @@ setup_global_ssh_key() {
 
 	# Generate the ssh key using the captured filename and global git email
 	cd ~/.ssh
-	ssh-keygen -t rsa -C $(git config --global user.email) -f "$ssh_file_name"
+	ssh-keygen -t ecdsa -C $(git config --global user.email) -f "$ssh_file_name"
 	echo "Ssh key generated and saved in ~/.ssh/"
 
 	pbcopy < "${ssh_file_name}.pub"
@@ -55,7 +55,7 @@ setup_local_ssh_key() {
 
 	# Generate the ssh key using the captured filename and local git email
 	cd ~/.ssh
-	ssh-keygen -t rsa -C ${git_user_email} -f "$ssh_file_name"
+	ssh-keygen -t ecdsa -C ${git_user_email} -f "$ssh_file_name"
 	echo "Ssh key generated and saved in ~/.ssh/"
 
 	pbcopy < "${ssh_file_name}.pub"
