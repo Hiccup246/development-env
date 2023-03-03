@@ -129,6 +129,7 @@ To perform development on this project you must:
 ## Vscode plugins
 - Dotenv
 - Editorconfig
+- Better TOML
 
 ## Mac setup
 - Sets safari debug menu
