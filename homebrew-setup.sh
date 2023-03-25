@@ -36,6 +36,8 @@ brew install rustup-init
 
 # Optional installations
 brew install railway
+brew install docker
+brew install nginx
 
 # Install GUI applications
 # --appdir="/Applications" installs applications for all users

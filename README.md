@@ -95,6 +95,8 @@ To perform development on this project you must:
 - asdf
 - rustup-init
 - railway
+- docker
+- nginx
 
 ## Homebrew cask packages
 - Spotify
