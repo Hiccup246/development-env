@@ -107,6 +107,7 @@ To perform development on this project you must:
 - Firefox
 - Docker
 - iTerm2
+- Flyctl
 
 ## Mac appstore installtions
 - Flycut

@@ -38,6 +38,7 @@ brew install rustup-init
 brew install railway
 brew install docker
 brew install nginx
+brew install flyctl
 
 # Install GUI applications
 # --appdir="/Applications" installs applications for all users
