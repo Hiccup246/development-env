@@ -132,6 +132,17 @@ To perform development on this project you must:
 - Dotenv
 - Editorconfig
 - Better TOML
+- Docker
+- Deno
+- Remote containers
+- Nginx
+- React js snippets
+- Jest
+- Playwright
+- Rust
+- Svelte
+- Typescript vue
+- Vue Volar
 
 ## Mac setup
 - Sets safari debug menu
