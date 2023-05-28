@@ -53,6 +53,9 @@ if ((!$?)); then
 	brew install --cask --appdir="/Applications" postman
 	brew install --cask --appdir="/Applications" firefox
 	brew install --cask --appdir="/Applications" docker
+	brew install --cask --appdir="/Applications" microsoft-teams
+	brew install --cask --appdir="/Applications" slack
+	brew install --cask --appdir="/Applications" bitwarden
 
 	if [[ ! -d /Applications/iTerm.app ]]; then
 		brew install --cask --appdir="/Applications" iterm2

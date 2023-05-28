@@ -108,10 +108,12 @@ To perform development on this project you must:
 - Docker
 - iTerm2
 - Flyctl
+- Bitwarden
+- Microsoft Teams
+- Slack
 
 ## Mac appstore installtions
 - Flycut
-- Bitwarden
 
 ## Zsh configuration
 - `zsh-autosuggestions` plugin
