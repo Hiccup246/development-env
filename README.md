@@ -146,6 +146,7 @@ To perform development on this project you must:
 - Svelte
 - Typescript vue
 - Vue Volar
+- Javascript and Typescript
 
 ## Mac setup
 - Sets safari debug menu

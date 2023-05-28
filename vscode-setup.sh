@@ -15,5 +15,6 @@ code --install-extension rust-lang.rust-analyzer
 code --install-extension svelte.svelte-vscode
 code --install-extension Vue.vscode-typescript-vue-plugin
 code --install-extension Vue.volar
+code --install-extension ms-vscode.vscode-typescript-next
 
 echo "✔ Generic Vscode plugins installed"
