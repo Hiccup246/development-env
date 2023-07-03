@@ -7,54 +7,56 @@ A place for my personal Macintosh development environment setup scripts
 ![program-main-menu-screenshot](https://raw.githubusercontent.com/Hiccup246/development-env/main/program-main-menu-screenshot.webp)
 
 
-This repository contains various scripts written in `zsh` shell that configure a mac based development environment. By running the main script you are presented with 5 key setup options which are described below. All the configuration options are listed at the end of this readme in a [index](#%EF%B8%8F-index-of-all-configurations).
-
-## Run entire mac setup
-1. Configures safari, finder, doc and default directories
-2. Installs Xcode command line tools
-3. Installs all homebrew packages
-4. Installs all homebrew GUI packages
-5. Install mac app store applications
-6. Configures git global config
-7. Adds homebrew `bash` (mac comes with an old version) to system shells
-8. Sets up and configures `zsh` shell
-9. Sets up and configures programming languages via `asdf`
-10. Sets up and configures the `rust` programming language via `rustup`
-11. Configures some generic Vscode plugins
-## Configure ssh keys
-- Allows you to configure global and/or local ssh keys
-## Configure global git info
-- Allows you to configure global git info
-## Clone repos from github user
-- Allows you to clone all public, non-forked, non-archived git repos from a given user
-## Quit
-- Allows you to quit the main menu
+This repository contains various scripts written in `zsh` shell that configures a mac based development environment. The various scripts and configuration options are listed at the end of this readme in a [index](#%EF%B8%8F-index-of-all-configurations).
 
 <br>
 
 # 🕹️ Usage
-To run the installation script you must:
-1. Clone this repository
-2. Run the following command to start the main script
+To run the installation script you must first clone this repository and navigate to the root directory. From here you can run any of the scripts by running:
    ```
-   chmod +x main-setup.sh && ./main-setup.sh
+   chmod +x <script>.sh && ./<script>.sh
    ```
+The scripts can be run in any order but I would recommend executing them in the following order:
+1. `mac-setup.sh` - Configures MacOS
+2. `homebrew-setup.sh` - Installs homebrew packages and casks (GUI applications)
+3. `bash-setup.sh` - Adds homebrew bash (as opposed to system bash) to the list of viable shells
+4. `zsh-setup.sh` - Configures zsh terminal
+5. `appstore-setup.sh` - Installs appstore applications
+6. `git-setup.sh` - Configures Git global username and email
+7. `asdf-setup.sh` - Installs all programming languages
+8. `rustup-setup.sh` - Installs rust tooling
+9. `vscode-setup.sh` - Configures vscode for development
+10. `ssh-setup.sh` - Configures ssh keys (using ecdsa) based on global git info 
 
+Make sure to name a ssh file like `global` otherwise the key will not be correctly added to the ssh agent
 <br>
 
 # ✍️ Manual Configuration
 Unfortunately, some configuration cannot be done automatically or is more effective when done manually. The following configuration should be done manually:
 - Update iTerm2 color scheme to solarized dark
+   ```
+   iTerm settings > Profiles > Colors
+   ```
+   Set "Color Presets..." to "Solarized Dark"
 - Update iTerm2 fonts to use installed powerline fonts
-- If zsh-autosuggestions are not showing edit the suggestions text color
+   ```
+   iTerm settings > Profiles > Text
+   ```
+   Set font to "Space Mono for Powerline"
+- If zsh-autosuggestions are not showing edit the iTerm
   ```
-  Basic Colors > Background and ANSI Colors > Bright Black are different
+  iTerm settings > Profiles > Colors
   ```
-- Manually set vscode terminal font by adding the following line to vscodes JSON settings
+  Then set ANSI Colors "Black bright to 40% grey"
+- Manually set vscode terminal font by adding the following line to vscodes JSON settings (Nesting and position does not matter unless `terminal.integrated.fontFamily` already exists)
   ```json
   "terminal.integrated.fontFamily": "Source Code Pro for Powerline"
   ```
 - Set Mac default browser to be Chrome
+- Set Bluetooth to show in the MacOS Menu bar (MacOS Ventura)
+   ```
+      System settings > Control Centre > Bluetooth
+   ```
 - Update Flycut to save a larger clipboard history
 - Install Bitwarden, Wappalyzer and AdBlock Google Chrome extensions
    - Optionally install ColorPick Eyedropper or Ultimate Color Picker extensions
@@ -147,6 +149,7 @@ To perform development on this project you must:
 - Typescript vue
 - Vue Volar
 - Javascript and Typescript
+- Tailwind Fold
 
 ## Mac setup
 - Sets safari debug menu
@@ -158,16 +161,10 @@ To perform development on this project you must:
 
 <br>
 
-# 💡 Inspiration taken from
+# 💡 Inspired By:
 - https://github.com/vendasta/setup-new-computer-script
 - https://github.com/donnemartin/dev-setup
 - https://github.com/thomaspoignant/mac-dev-setup
 - https://github.com/thoughtbot/laptop
 - https://github.com/nicolashery/mac-dev-setup
 - https://starship.rs/
-
-<br>
-
-# 🤔 ToDo
-- Implement interactive menus with arrow key selection for multi-select and single select menus
-- Implement a loading spinner for installation commands

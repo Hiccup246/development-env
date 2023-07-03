@@ -29,4 +29,7 @@ cd fonts
 cd ..
 rm -rf fonts
 
+echo "Setting shell to zsh..."
+chsh -s /bin/zsh
+
 echo "✔ Zsh shell installed and configured"

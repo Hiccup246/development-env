@@ -3,7 +3,7 @@
 # Inspiration taken from https://gist.github.com/santoshphegde/218e26317327f9c5aa9791ad767c1b3e
 
 clone_user_repos() {
-	read 'github_user?Enter the github user name you want to clone repos from: '
+	read 'github_user?Enter the github user name you want to clone all public, non-archived, non-forked repos from: '
 	response=$(curl -s -f "https://api.github.com/users/${github_user}/repos")
 
 	if (($?)); then

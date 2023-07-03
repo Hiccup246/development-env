@@ -19,6 +19,7 @@ brew install bash
 brew install curl
 brew install wget
 brew install coreutils
+brew install jq
 
 # Code repostiry
 brew install git

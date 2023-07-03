@@ -42,33 +42,5 @@ else
 	echo "✔ Xcode install complete"
 fi
 
-# Install homebrew + install applications + GUI applications
-chmod +x homebrew-setup.sh && ./homebrew-setup.sh
-
-# Bash setup
-chmod +x bash-setup.sh && ./bash-setup.sh
-
-# Zsh shell setup
-chmod +x zsh-setup.sh && ./zsh-setup.sh
-
-# Install appstore applications
-chmod +x appstore-setup.sh && ./appstore-setup.sh
-
-# Git setup
-chmod +x git-setup.sh && ./git-setup.sh
-
-# Asdf program installation
-chmod +x asdf-setup.sh && ./asdf-setup.sh
-
-# Rustup installation
-chmod +x rustup-setup.sh && ./rustup-setup.sh
-
-# VScode generic setup
-chmod +x vscode-setup.sh && ./vscode-setup.sh
-
-# Set shell to zsh (In case bash installation set it to bash)
-echo "Setting shell to zsh..."
-chsh -s /bin/zsh
-
 echo ""
 echo "✔ Mac setup complete"

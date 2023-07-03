@@ -16,5 +16,6 @@ code --install-extension svelte.svelte-vscode
 code --install-extension Vue.vscode-typescript-vue-plugin
 code --install-extension Vue.volar
 code --install-extension ms-vscode.vscode-typescript-next
+code --install-extension stivo.tailwind-fold
 
 echo "✔ Generic Vscode plugins installed"
