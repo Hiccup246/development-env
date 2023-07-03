@@ -191,6 +191,9 @@ pick_programs_to_install() {
 # Add .asdfrc to user home directory
 cp .asdfrc ~/
 
+# Add .tool-versions to user home directory
+cp .tool-versions ~/
+
 # Program installation menu
 read -q "install_everything? Do you want to install everything? [y/n]"
 answer=$?
