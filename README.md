@@ -168,3 +168,9 @@ To perform development on this project you must:
 - https://github.com/thoughtbot/laptop
 - https://github.com/nicolashery/mac-dev-setup
 - https://starship.rs/
+
+# ToDo
+- Add github setup to readme
+- Refactor ssh script to allow for running of just config
+- Refactor script or update readme to allow for easier running of commands. No more copy pasting and inserting script names
+- Move cp .zshrc setup to end of script file
