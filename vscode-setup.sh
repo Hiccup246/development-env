@@ -3,7 +3,7 @@
 
 code --install-extension mikestead.dotenv
 code --install-extension EditorConfig.EditorConfig
-code --install-extension bungcip.better-toml
+code --install-extension tamasfe.even-better-toml
 code --install-extension denoland.vscode-deno
 code --install-extension ms-vscode-remote.remote-containers
 code --install-extension ms-azuretools.vscode-docker
