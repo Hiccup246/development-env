@@ -23,6 +23,7 @@ echo "✔ Safari configuration for development complete"
 # Configure finder view settings
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder ShowPathbar -bool true
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 echo "✔ Finder configuration for development complete"
 
 # Unhide library folder
