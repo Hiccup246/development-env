@@ -12,23 +12,28 @@ This repository contains various scripts written in `zsh` shell that configures 
 <br>
 
 # 🕹️ Usage
-To run the installation script you must first clone this repository and navigate to the root directory. From here you can run any of the scripts by running:
-   ```
-   chmod +x <script>.sh && ./<script>.sh
-   ```
-The scripts can be run in any order but I would recommend executing them in the following order:
-1. `mac-setup.sh` - Configures MacOS
-2. `homebrew-setup.sh` - Installs homebrew packages and casks (GUI applications)
-3. `bash-setup.sh` - Adds homebrew bash (as opposed to system bash) to the list of viable shells
-4. `zsh-setup.sh` - Configures zsh terminal
-5. `appstore-setup.sh` - Installs appstore applications
-6. `git-setup.sh` - Configures Git global username and email
-7. `asdf-setup.sh` - Installs all programming languages
-8. `rustup-setup.sh` - Installs rust tooling
-9. `vscode-setup.sh` - Configures vscode for development
-10. `ssh-setup.sh` - Configures ssh keys (using ecdsa) based on global git info 
+To run the installation scripts you must:
+0. Setup ssh key if you have none
+   -  `ssh-keygen -t ecdsa -C <git_user_email> -f <ssh_file_name>`
+1. Clone this repository
+2. Run `sudo chmod -R +x development-env` to make all project files executable
+3. Navigate to the root directory. From here you can run any of the project scripts
+  
+The scripts can be run in any order but I would recommend executing them in the following order (Note that no 'main' script exists due to the execution times of some scripts.):
 
-Make sure to name a ssh file like `global` otherwise the key will not be correctly added to the ssh agent
+0. `./info.sh` - Prints all possible commands
+1. `./mac-setup.sh` - Configures MacOS
+2. `./homebrew-setup.sh` - Installs homebrew packages and casks (GUI applications)
+3. `./bash-setup.sh` - Adds homebrew bash (as opposed to system bash) to the list of viable shells
+4. `./zsh-setup.sh` - Configures zsh terminal
+5. `./appstore-setup.sh` - Installs appstore applications
+6. `./git-setup.sh` - Configures Git global username and email
+7. `./asdf-setup.sh` - Installs all programming languages
+8. `./rustup-setup.sh` - Installs rust tooling
+9. `./vscode-setup.sh` - Configures vscode for development
+10. `./ssh-setup.sh` - Sets up ssh configuration
+11. `./github-setup.sh` - Clone all public repos from a GitHub user
+
 <br>
 
 # ✍️ Manual Configuration
@@ -42,13 +47,13 @@ Unfortunately, some configuration cannot be done automatically or is more effect
    ```
    iTerm settings > Profiles > Text
    ```
-   Set font to "Space Mono for Powerline"
+   Set the font to "Space Mono for Powerline"
 - If zsh-autosuggestions are not showing edit the iTerm
   ```
   iTerm settings > Profiles > Colors
   ```
   Then set ANSI Colors "Black bright to 40% grey"
-- Manually set vscode terminal font by adding the following line to vscodes JSON settings (Nesting and position does not matter unless `terminal.integrated.fontFamily` already exists)
+- Manually set vscode terminal font by adding the following line to vscodes JSON settings (Nesting and position do not matter unless `terminal.integrated.fontFamily` already exists)
   ```json
   "terminal.integrated.fontFamily": "Source Code Pro for Powerline"
   ```
@@ -60,23 +65,24 @@ Unfortunately, some configuration cannot be done automatically or is more effect
 - Update Flycut to save a larger clipboard history
 - Install Bitwarden, Wappalyzer and AdBlock Google Chrome extensions
    - Optionally install ColorPick Eyedropper or Ultimate Color Picker extensions
-- Setup mac email accounts
+- Setup Mac email accounts
 
 <br>
 
 # 👷 Development
 To perform development on this project you must:
 1. Clone this project
-2. Install [`shfmt`](https://github.com/mvdan/sh) shell formatter by running the following command from [webinstall](https://webinstall.dev/shfmt/)
-   ```
+2. Grant executable permissions to the root directory with `sudo chmod -R +x development-env`
+3. Install [`shfmt`](https://github.com/mvdan/sh) shell formatter by running the following command from [webinstall](https://webinstall.dev/shfmt/)
+   ```zsh
    curl -sS https://webi.sh/shfmt | sh
    ```
-3. Run scripts using the command
+4. Run the info script or refer to this documentation for available commands
+   ```zsh
+   ./info.sh
    ```
-   chmod +x <script-name>.sh && ./<script-name>.sh
-   ```
-4. Format scripts after changes by running
-   ```
+5. Format scripts after changes by running
+   ```zsh
    shfmt -l -w .
    ```
 
@@ -136,7 +142,7 @@ To perform development on this project you must:
 ## Vscode plugins
 - Dotenv
 - Editorconfig
-- Better TOML
+- Even better TOML
 - Docker
 - Deno
 - Remote containers
@@ -156,6 +162,7 @@ To perform development on this project you must:
 - Sets safari development menu
 - Sets safari webkit development extras
 - Sets finder to show path and status bar
+- Sets finder to show all file extensions
 - Unhides the library directory
 - Sets mac doc to not display recent apps
 
@@ -168,9 +175,3 @@ To perform development on this project you must:
 - https://github.com/thoughtbot/laptop
 - https://github.com/nicolashery/mac-dev-setup
 - https://starship.rs/
-
-# ToDo
-- Add github setup to readme
-- Refactor ssh script to allow for running of just config
-- Refactor script or update readme to allow for easier running of commands. No more copy pasting and inserting script names
-- Move cp .zshrc setup to end of script file
