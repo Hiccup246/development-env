@@ -22,7 +22,7 @@ To run the installation scripts you must:
 2. Run `sudo chmod -R +x development-env` to make all project files executable
 3. Navigate to the root directory. From here you can run any of the project scripts
   
-The scripts can be run in any order but I would recommend executing them in the following order (Note that no 'main' script exists due to the execution times of some scripts.):
+The scripts can be run in any order but I would recommend executing them in the following order (Note that no 'main' script exists due to the execution times of some scripts):
 
 0. `./info.sh` - Prints all possible commands
 1. `./mac-setup.sh` - Configures MacOS
