@@ -13,8 +13,11 @@ This repository contains various scripts written in `zsh` shell that configures 
 
 # 🕹️ Usage
 To run the installation scripts you must:
-0. Setup ssh key if you have none
-   -  `ssh-keygen -t ecdsa -C <git_user_email> -f <ssh_file_name>`
+
+0. Setup ssh key if you have none using the following command
+   ```zsh
+   ssh-keygen -t ecdsa -C <git_user_email> -f <ssh_file_name>
+   ```
 1. Clone this repository
 2. Run `sudo chmod -R +x development-env` to make all project files executable
 3. Navigate to the root directory. From here you can run any of the project scripts
