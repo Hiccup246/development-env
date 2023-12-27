@@ -96,6 +96,13 @@ To perform development on this project you must:
 
 <br>
 
+# 🔧 Troubleshooting
+If a script fails to run first try re-running it, if it continues to fail then you will have to investigate why. The most common failure occurs in the `.zsh-setup` script where the powerline fonts and `.zshrc` file fail to configure correctly. To fix this one can try the following 
+- Re-run the script
+- Manually set the system `.zshrc` file using the command `cp .zshrc ~/` from within the root of the project directory
+
+<br>
+
 # 🗂️ Index of all configurations
 ## Homebrew packages
 - curl
