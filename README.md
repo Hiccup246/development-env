@@ -14,10 +14,15 @@ This repository contains various scripts written in `zsh` shell that configures 
 # 🕹️ Usage
 To run the installation scripts you must:
 
-0. Setup ssh key if you have none using the following command
-   ```zsh
-   ssh-keygen -t ecdsa -C <git_user_email> -f <ssh_file_name>
-   ```
+0. Setup ssh key if you have none
+  - Generate a SSH key using the command 
+     ```zsh
+     ssh-keygen -t ecdsa -C <git_user_email> -f <ssh_file_name>
+     ```
+  - Copy the SSH key to your clipboard using the command below and add it to [Github](https://github.com/)
+     ```zsh
+     pbcopy < ~/.ssh/id_ecdsa.pub
+     ```
 1. Clone this repository
 2. Run `sudo chmod -R +x development-env` to make all project files executable
 3. Navigate to the root directory. From here you can run any of the project scripts
