@@ -118,6 +118,8 @@ alias ohmyzsh="code ~/.oh-my-zsh"
 alias gs="git status"
 alias gammend="git commit --amend --no-edit"
 alias pn=pnpm
+alias merge-main="git fetch --all && git merge origin/main"
+alias rebase-main="git fetch --all && git pull origin main --rebase"
 
 prompt_context() {
   # %{$fg[yellow]%} - sets the foreground color to yellow
