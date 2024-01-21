@@ -68,6 +68,9 @@ ZSH_THEME="agnoster"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
+# Source homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Homebrew completions https://docs.brew.sh/Shell-Completion#configuring-completions-in-bash
 FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
