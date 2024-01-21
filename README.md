@@ -190,3 +190,15 @@ If a script fails to run first try re-running it, if it continues to fail then y
 - https://github.com/thoughtbot/laptop
 - https://github.com/nicolashery/mac-dev-setup
 - https://starship.rs/
+
+<br>
+
+# 📋 ToDo
+1. Split homebrew setup into
+   - Install homebrew application (with path updates)
+   - Install zsh and configure shell
+   - Install all homebrew applications
+
+2. Update script to be independant of running location i.e. ./development-env/... or ./.. if possible and update readme with location of where to run scripts from
+
+3. Update git-setup script with command `git config core.fileMode false`
