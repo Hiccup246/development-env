@@ -57,6 +57,7 @@ if ((!$?)); then
 	brew install --cask --appdir="/Applications" microsoft-teams
 	brew install --cask --appdir="/Applications" slack
 	brew install --cask --appdir="/Applications" bitwarden
+	brew intsall --cask --appdir="/Applications" raycast
 
 	if [[ ! -d /Applications/iTerm.app ]]; then
 		brew install --cask --appdir="/Applications" iterm2

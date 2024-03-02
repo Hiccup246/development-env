@@ -134,6 +134,7 @@ If a script fails to run first try re-running it, if it continues to fail then y
 - Bitwarden
 - Microsoft Teams
 - Slack
+- Raycast
 
 ## Mac appstore installtions
 - Flycut
