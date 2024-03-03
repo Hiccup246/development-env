@@ -68,15 +68,31 @@ Open VSCode and search for VSCode's `settings.json` file. Copy the content from 
       * Hide status icons -> True
 
 ## General
-- Make alt-tab, raycast and flycut launch on login
-- Set Mac default browser to be Chrome
-- Set Bluetooth to show in the MacOS Menu bar (MacOS Ventura)
-   ```
-      System settings > Control Centre > Bluetooth
-   ```
 - Update Flycut to save a larger clipboard history
-- Install Bitwarden, Wappalyzer and AdBlock Google Chrome extensions
-   - Optionally install ColorPick Eyedropper or Ultimate Color Picker extensions
+- Install Chrome extensions
+   - Bitwarden
+   - Wappalyzer
+   - AdBlock
+   - ColorPick Eyedropper or Ultimate Color Picker
+
+## Flycut
+* Preferences
+   * Clippings -> Remember -> 40
+
+## MacOS
+* System Settings
+   * Desktop & Dock
+      * Widgets -> Default web browser -> Google Chrome
+   * General
+      * Login Items
+         * Open At Login
+            * Add -> AltTab
+            * Add -> Raycast
+            * Add ->Flycut
+   * Control centre
+      * Menu Bar Only -> Spotlight -> Don't Show in Menu Bar
+      * Automatically hide and show the menu bar -> Never
+      * Control Centre Modules -> Bluetooth -> Show in Menu Bar
 
 <br>
 
