@@ -1,0 +1,12 @@
+spotify
+discord
+visual-studio-code
+google-chrome
+postman
+firefox
+docker
+microsoft-teams
+slack
+bitwarden
+raycast
+iterm2
