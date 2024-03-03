@@ -10,3 +10,4 @@ slack
 bitwarden
 raycast
 iterm2
+alt-tab
