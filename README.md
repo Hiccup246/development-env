@@ -67,9 +67,8 @@ Open VSCode and search for VSCode's `settings.json` file. Copy the content from 
       * Hide Space number labels -> True
       * Hide status icons -> True
 
-## General
-- Update Flycut to save a larger clipboard history
-- Install Chrome extensions
+## Chrome
+- Install Chrome Extensions
    - Bitwarden
    - Wappalyzer
    - AdBlock
