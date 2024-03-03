@@ -10,8 +10,8 @@ Orta.vscode-jest
 ms-playwright.playwright
 rust-lang.rust-analyzer
 svelte.svelte-vscode
-Vue.vscode-typescript-vue-plugin
 Vue.volar
 ms-vscode.vscode-typescript-next
 stivo.tailwind-fold
 YoavBls.pretty-ts-errors
+esbenp.prettier-vscode
