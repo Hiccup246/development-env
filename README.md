@@ -61,7 +61,14 @@ Unfortunately, some configuration cannot be done automatically or is more effect
 ## VSCode
 Open VSCode and search for VSCode's `settings.json` file. Copy the content from `vscode-config.json` into the `settings.json`. You should see your editor instantly update.
 
+## Alt tab
+* Preferences
+   * Appearance 
+      * Hide Space number labels -> True
+      * Hide status icons -> True
+
 ## General
+- Make alt-tab, raycast and flycut launch on login
 - Set Mac default browser to be Chrome
 - Set Bluetooth to show in the MacOS Menu bar (MacOS Ventura)
    ```
