@@ -1,0 +1,17 @@
+mikestead.dotenv
+EditorConfig.EditorConfig
+tamasfe.even-better-toml
+denoland.vscode-deno
+ms-vscode-remote.remote-containers
+ms-azuretools.vscode-docker
+william-voyek.vscode-nginx
+dsznajder.es7-react-js-snippets
+Orta.vscode-jest
+ms-playwright.playwright
+rust-lang.rust-analyzer
+svelte.svelte-vscode
+Vue.vscode-typescript-vue-plugin
+Vue.volar
+ms-vscode.vscode-typescript-next
+stivo.tailwind-fold
+YoavBls.pretty-ts-errors
