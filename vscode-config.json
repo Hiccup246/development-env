@@ -12,6 +12,7 @@
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.tabSize": 2,
+  "editor.rulers": [110],
   "editor.unicodeHighlight.invisibleCharacters": false,
   "emmet.showAbbreviationSuggestions": false,
   "explorer.openEditors.visible": 1,
