@@ -7,7 +7,7 @@ A place for my personal Macintosh development environment setup scripts
 ![program-main-menu-screenshot](https://raw.githubusercontent.com/Hiccup246/development-env/main/program-main-menu-screenshot.webp)
 
 
-This repository contains various scripts written in `zsh` shell that configures a mac based development environment. The various scripts and configuration options are listed at the end of this readme in a [index](#%EF%B8%8F-index-of-all-configurations).
+This repository contains various scripts written in `zsh` shell that configures a mac based development environment. The various scripts and configuration options are listed at the end of this readme in a [index](#%EF%B8%8F-configuration-index).
 
 <br>
 
@@ -46,25 +46,22 @@ The scripts can be run in any order but I would recommend executing them in the 
 
 # ✍️ Manual Configuration
 Unfortunately, some configuration cannot be done automatically or is more effective when done manually. The following configuration should be done manually:
-- Update iTerm2 color scheme to solarized dark
-   ```
-   iTerm settings > Profiles > Colors
-   ```
-   Set "Color Presets..." to "Solarized Dark"
-- Update iTerm2 fonts to use installed powerline fonts
-   ```
-   iTerm settings > Profiles > Text
-   ```
-   Set the font to "Space Mono for Powerline"
-- If zsh-autosuggestions are not showing edit the iTerm
-  ```
-  iTerm settings > Profiles > Colors
-  ```
-  Then set ANSI Colors "Black bright to 40% grey"
-- Manually set vscode terminal font by adding the following line to vscodes JSON settings (Nesting and position do not matter unless `terminal.integrated.fontFamily` already exists)
-  ```json
-  "terminal.integrated.fontFamily": "Source Code Pro for Powerline"
-  ```
+
+## iTerm
+* Profiles
+  * Default
+      * General -> Working Directory -> Reuse previous session's directory
+      * Colors -> Color Presets -> Solarized Dark
+      * Colors -> ANSI Colors -> Black bright to 40% grey
+      * Text -> Font -> Space Mono for Powerline
+          * You can download powerline fonts [here](https://github.com/powerline/fonts).
+      * Keys -> Key Mappings -> Presets -> Natural Text Editing
+          * This allows me to use the [keyboard shortcuts](https://gist.github.com/w3cj/022081eda22081b82c52)
+
+## VSCode
+Open VSCode and search for VSCode's `settings.json` file. Copy the content from `vscode-config.json` into the `settings.json`. You should see your editor instantly update.
+
+## General
 - Set Mac default browser to be Chrome
 - Set Bluetooth to show in the MacOS Menu bar (MacOS Ventura)
    ```
@@ -73,7 +70,13 @@ Unfortunately, some configuration cannot be done automatically or is more effect
 - Update Flycut to save a larger clipboard history
 - Install Bitwarden, Wappalyzer and AdBlock Google Chrome extensions
    - Optionally install ColorPick Eyedropper or Ultimate Color Picker extensions
-- Setup Mac email accounts
+
+<br>
+
+# 🔧 Troubleshooting
+If a script fails to run first try re-running it, if it continues to fail then you will have to investigate why. The most common failure occurs in the `.zsh-setup` script where the powerline fonts and `.zshrc` file fail to configure correctly. To fix this one can try the following 
+- Re-run the script
+- Manually set the system `.zshrc` file using the command `cp .zshrc ~/` from within the root of the project directory
 
 <br>
 
@@ -96,45 +99,11 @@ To perform development on this project you must:
 
 <br>
 
-# 🔧 Troubleshooting
-If a script fails to run first try re-running it, if it continues to fail then you will have to investigate why. The most common failure occurs in the `.zsh-setup` script where the powerline fonts and `.zshrc` file fail to configure correctly. To fix this one can try the following 
-- Re-run the script
-- Manually set the system `.zshrc` file using the command `cp .zshrc ~/` from within the root of the project directory
-
-<br>
-
-# 🗂️ Index of all configurations
-## Homebrew packages
-- curl
-- wget
-- coreutils
-- bash
-- zsh 
-- git
-- pnpm
-- npm
-- pip
-- mas
-- asdf
-- rustup-init
-- railway
-- docker
-- nginx
-
-## Homebrew cask packages
-- Spotify
-- Discord
-- Vscode
-- Google Chrome
-- Postman
-- Firefox
-- Docker
-- iTerm2
-- Flyctl
-- Bitwarden
-- Microsoft Teams
-- Slack
-- Raycast
+# 🗂️ Configuration index
+Package lists:
+- `vscode-extensions.txt` - All VSCode extensions
+- `homebrew-cask.txt` - All GUI applications
+- `homebrew.txt` - All homebrew packages
 
 ## Mac appstore installtions
 - Flycut
@@ -155,32 +124,23 @@ If a script fails to run first try re-running it, if it continues to fail then y
 - Deno
 - Go
 
-## Vscode plugins
-- Dotenv
-- Editorconfig
-- Even better TOML
-- Docker
-- Deno
-- Remote containers
-- Nginx
-- React js snippets
-- Jest
-- Playwright
-- Rust
-- Svelte
-- Typescript vue
-- Vue Volar
-- Javascript and Typescript
-- Tailwind Fold
-
 ## Mac setup
 - Sets safari debug menu
 - Sets safari development menu
 - Sets safari webkit development extras
 - Sets finder to show path and status bar
 - Sets finder to show all file extensions
+- Sets finder to search in current directory
 - Unhides the library directory
 - Sets mac doc to not display recent apps
+
+<br>
+
+# ❤️ Some of my Favourite Fonts
+- [Fira Code](https://github.com/tonsky/FiraCode) (My favourite editor font)
+- [Hack](https://sourcefoundry.org/hack/) (My second favourite editor font)
+- [Space Mono for Powerline](https://github.com/powerline/fonts) (My favourite terminal font)
+- [Source Code Pro for Powerline](https://github.com/powerline/fonts) (Default VSCode font)
 
 <br>
 
@@ -191,15 +151,5 @@ If a script fails to run first try re-running it, if it continues to fail then y
 - https://github.com/thoughtbot/laptop
 - https://github.com/nicolashery/mac-dev-setup
 - https://starship.rs/
-
-<br>
-
-# 📋 ToDo
-1. Split homebrew setup into
-   - Install homebrew application (with path updates)
-   - Install zsh and configure shell
-   - Install all homebrew applications
-
-2. Update script to be independant of running location i.e. ./development-env/... or ./.. if possible and update readme with location of where to run scripts from
-
-3. Update git-setup script with command `git config core.fileMode false`
+- https://github.com/CodingGarden/mac-setup
+- https://gist.github.com/MatthewEppelsheimer/2269385
