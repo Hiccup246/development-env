@@ -36,7 +36,6 @@
   "terminal.integrated.fontSize": 14,
   "vsicons.dontShowNewVersionMessage": true,
   "workbench.editor.labelFormat": "medium",
-  "workbench.editor.showTabs": "none",
   "workbench.iconTheme": "vscode-icons",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": false,
