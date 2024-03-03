@@ -1,0 +1,29 @@
+# Shells
+zsh
+bash
+
+# Command line utilities
+curl
+wget
+coreutils
+jq
+
+# Code repostiry
+git
+
+# Package managers
+pnpm
+npm
+
+# GUI Application installer
+mas
+
+# Version managers
+asdf
+rustup-init
+
+# Optional installations
+railway
+docker
+nginx
+flyctl
