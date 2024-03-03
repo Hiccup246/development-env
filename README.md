@@ -72,6 +72,7 @@ Open VSCode and search for VSCode's `settings.json` file. Copy the content from 
    - Bitwarden
    - Wappalyzer
    - AdBlock
+   - Tabliss
    - ColorPick Eyedropper or Ultimate Color Picker
 
 ## Flycut
