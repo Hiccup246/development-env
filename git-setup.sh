@@ -3,6 +3,7 @@
 
 # Make git always use ssh for github repos
 git config --global url."git@github.com:".insteadOf https://github.com/
+git config core.fileMode false
 
 configure_global_git_email() {
 	read 'git_email?What do you want your global git email address to be?: '
