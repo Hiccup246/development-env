@@ -1,15 +1,4 @@
 #!/bin/zsh
-# Run all development environment scripts for mac
-# - native applications for development
-# - run homebrew-setup
-# - run appstore-setup scripts
-# - run git setup
-# - run bash setup
-# - run zsh setup
-# - run asdf setup
-# - run rustup setup
-# - run vscode setup
-
 echo "Beginning mac setup..."
 
 # Enable safari developer settings
@@ -24,6 +13,8 @@ echo "✔ Safari configuration for development complete"
 defaults write com.apple.finder ShowStatusBar -bool true
 defaults write com.apple.finder ShowPathbar -bool true
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+# Use current directory as default search scope in Finder
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 echo "✔ Finder configuration for development complete"
 
 # Unhide library folder
