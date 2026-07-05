@@ -1,7 +1,7 @@
 import * as p from "@clack/prompts";
-import { runLogged, commandExists } from "../runner.js";
+import { runLogged, runScriptLogged } from "../runner.js";
 import { orThrow } from "../prompts.js";
-import { readDataLines } from "../data/read.js";
+import { readData, readDataLines } from "../data/read.js";
 import type { SetupTask } from "./registry.js";
 
 export const homebrewTask: SetupTask = {
@@ -9,15 +9,7 @@ export const homebrewTask: SetupTask = {
 	label: "Homebrew",
 	hint: "packages + optional casks",
 	async run() {
-		if (await commandExists("brew")) {
-			p.log.success("Homebrew already installed");
-		} else {
-			await runLogged(
-				"Installing Homebrew",
-				'/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"',
-			);
-			await runLogged("Updating Homebrew", "brew update");
-		}
+		await runScriptLogged("Checking Homebrew", readData("scripts/install-homebrew.sh"));
 
 		const packages = readDataLines("homebrew.txt");
 		await runLogged("Installing Homebrew packages", `brew install ${packages.join(" ")}`);

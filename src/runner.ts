@@ -1,4 +1,7 @@
 import { spawn } from "node:child_process";
+import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import * as p from "@clack/prompts";
 
 export class CommandError extends Error {
@@ -92,4 +95,31 @@ export async function commandExists(bin: string): Promise<boolean> {
 export async function pathExists(path: string): Promise<boolean> {
 	const result = await runCapture(`[ -e "${path}" ] && echo yes`);
 	return result === "yes";
+}
+
+function writeTempScript(script: string): string {
+	const dir = mkdtempSync(join(tmpdir(), "devenv-"));
+	const file = join(dir, "script.sh");
+	writeFileSync(file, script, { mode: 0o755 });
+	return file;
+}
+
+/** Runs embedded script content as a real .sh file through runLogged. */
+export async function runScriptLogged(title: string, script: string): Promise<void> {
+	const file = writeTempScript(script);
+	try {
+		await runLogged(title, `bash "${file}"`);
+	} finally {
+		rmSync(file, { force: true, recursive: true });
+	}
+}
+
+/** Runs embedded script content as a real .sh file through runInteractive. */
+export async function runScriptInteractive(script: string): Promise<void> {
+	const file = writeTempScript(script);
+	try {
+		await runInteractive(`bash "${file}"`);
+	} finally {
+		rmSync(file, { force: true, recursive: true });
+	}
 }
