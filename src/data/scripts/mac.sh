@@ -22,7 +22,7 @@ defaults write com.apple.dock show-recents -bool FALSE
 echo "✔ Dock and Library configuration complete"
 
 # Xcode command line tools
-if xcode-select -p >/dev/null 2>&1; then
+if xcode-select -p > /dev/null 2>&1; then
 	echo "✔ Xcode command line tools already installed"
 else
 	echo "Installing Xcode command line tools..."
