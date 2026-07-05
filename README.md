@@ -131,6 +131,44 @@ Releases are built by `.github/workflows/release.yml` on any `v*` tag push — i
 
 <br>
 
+# 🧭 Project structure
+
+A quick map of the codebase, for anyone new to the project:
+
+```
+src/
+  index.ts              starts the app, shows the menu
+  runner.ts             runs shell commands for tasks
+  prompts.ts            small shared prompt helper
+  types/                TypeScript type helpers
+
+  tasks/                one file per setup step
+    registry.ts         the list of steps, in order
+    mac.ts, homebrew.ts, shell.ts, appstore.ts,
+    git.ts, languages.ts, rust.ts, vscode.ts,
+    dotfiles.ts, ai.ts, ssh.ts, github.ts     what each step actually does
+
+  data/                 files the tasks use
+    *.txt               lists of packages to install
+    scripts/*.sh        bash scripts for trickier steps
+    dotfiles/           copies of personal config files
+
+install.sh              downloads and runs the app
+vscode-config.json      VSCode settings you copy in yourself
+.github/workflows/      runs checks and builds releases
+```
+
+**How a task works:** each file in `tasks/` is one setup step (installing Homebrew, configuring git, and so on). `registry.ts` just lists them in the order they run. Anything a task needs (a package list, a bash script, a config file) lives in `data/` and gets bundled straight into the app when it's compiled, so there's nothing extra to copy around at install time.
+
+**Where to make changes:**
+- **Add a new setup step**: create a new file in `src/tasks/`, then add it to the list in `src/tasks/registry.ts`.
+- **Add something that runs anytime, not just during setup** (like the GitHub-repo-cloning option): same as above, but wire it into the menu in `src/index.ts` instead of the registry list.
+- **Add a package to install**: just edit the relevant `.txt` file in `src/data/`, no code needed.
+- **Change a bash script**: edit the file in `src/data/scripts/`, then run `shfmt -l -w install.sh src/data/scripts` and `bun run lint:sh` to check it.
+- **Change the dotfiles a fresh machine gets**: edit the files in `src/data/dotfiles/` directly.
+
+<br>
+
 # 🗂️ Configuration index
 Package lists (in `src/data/`):
 - `vscode-extensions.txt` - All VSCode extensions
