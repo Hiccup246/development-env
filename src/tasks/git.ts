@@ -17,14 +17,19 @@ async function promptConfig(key: string, message: string): Promise<void> {
 	await runLogged(`Setting git ${key}`, `git config --global ${key} "${value}"`);
 }
 
+/** Prompts for and applies git's global identity fields. Reused standalone from the main menu. */
+export async function configureGitIdentity(): Promise<void> {
+	await promptConfig("user.email", "Global git email");
+	await promptConfig("user.name", "Global git name (Firstname Lastname)");
+	await promptConfig("user.displayname", "Global git display name (Firstname Lastname)");
+}
+
 export const gitTask: SetupTask = {
 	id: "git",
 	label: "Git config",
 	hint: "email, name, editor, difftool",
 	async run() {
 		await runScriptLogged("Applying git defaults", readFileSync(gitDefaultsScript, "utf8"));
-		await promptConfig("user.email", "Global git email");
-		await promptConfig("user.name", "Global git name (Firstname Lastname)");
-		await promptConfig("user.displayname", "Global git display name (Firstname Lastname)");
+		await configureGitIdentity();
 	},
 };

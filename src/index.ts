@@ -1,5 +1,7 @@
 import * as clackPrompt from "@clack/prompts";
 import { taskRegistry, type SetupTask } from "./tasks/registry.js";
+import { githubTask } from "./tasks/github.js";
+import { configureGitIdentity } from "./tasks/git.js";
 
 type TaskOutcome = "ran" | "skipped" | "failed";
 
@@ -94,6 +96,13 @@ const MANUAL_STEPS = [
 	"- VSCode: copy vscode-config.json into your settings.json",
 ].join("\n");
 
+const gitIdentityTask: SetupTask = {
+	id: "git-identity",
+	label: "Git identity",
+	hint: "email, name, display name",
+	run: configureGitIdentity,
+};
+
 function printOutro(outcomes: Map<string, TaskOutcome>): void {
 	if (outcomes.size > 0) {
 		const counts = { ran: 0, skipped: 0, failed: 0 };
@@ -110,30 +119,62 @@ function printOutro(outcomes: Map<string, TaskOutcome>): void {
 
 async function main() {
 	clackPrompt.intro("development-env setup");
+	clackPrompt.note(
+		"Clone GitHub user's repos, Reconfigure git identity",
+		"If you need to reconfigure after install",
+	);
 
-	const mode = await clackPrompt.select({
-		message: "What do you want to do?",
-		options: [
-			{
-				value: "guided",
-				label: "Guided setup",
-				hint: "runs everything in recommended order",
-			},
-			{ value: "pick", label: "Pick individual tasks" },
-			{ value: "exit", label: "Exit" },
-		],
-	});
-	exitOnCancel(mode);
+	for (;;) {
+		const mode = await clackPrompt.select({
+			message: "What do you want to do?",
+			options: [
+				{
+					value: "guided",
+					label: "Guided setup",
+					hint: "runs everything in recommended order",
+				},
+				{ value: "pick", label: "Pick individual tasks" },
+				{
+					value: "github-clone",
+					label: "Clone GitHub user's repos",
+					hint: "independent of setup — run anytime",
+				},
+				{
+					value: "git-identity",
+					label: "Reconfigure git identity",
+					hint: "independent of setup — run anytime",
+				},
+				{ value: "exit", label: "Exit" },
+			],
+		});
+		exitOnCancel(mode);
 
-	const outcomes = new Map<string, TaskOutcome>();
+		if (mode === "exit") {
+			clackPrompt.outro("Bye");
+			return;
+		}
 
-	if (mode === "guided") {
-		await guidedSetup(outcomes);
-	} else if (mode === "pick") {
-		await pickTasks(outcomes);
+		if (mode === "github-clone") {
+			await runTask(githubTask);
+			continue;
+		}
+
+		if (mode === "git-identity") {
+			await runTask(gitIdentityTask);
+			continue;
+		}
+
+		const outcomes = new Map<string, TaskOutcome>();
+
+		if (mode === "guided") {
+			await guidedSetup(outcomes);
+		} else {
+			await pickTasks(outcomes);
+		}
+
+		printOutro(outcomes);
+		return;
 	}
-
-	printOutro(outcomes);
 }
 
 void main();

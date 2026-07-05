@@ -9,7 +9,6 @@ import { vscodeTask } from "./vscode.js";
 import { dotfilesTask } from "./dotfiles.js";
 import { aiTask } from "./ai.js";
 import { sshTask } from "./ssh.js";
-import { githubTask } from "./github.js";
 
 export interface SetupTask {
 	id: string;
@@ -34,5 +33,4 @@ export const taskRegistry: SetupTask[] = [
 	dotfilesTask,
 	aiTask,
 	sshTask,
-	githubTask,
 ];
