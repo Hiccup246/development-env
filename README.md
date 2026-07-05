@@ -113,7 +113,9 @@ To perform development on this project you must:
 5. Before committing, typecheck and lint. Linting covers both TypeScript ([eslint](https://eslint.org/)) and the embedded shell scripts ([shellcheck](https://www.shellcheck.net/), install via `brew install shellcheck`)
    ```zsh
    bun run typecheck
-   bun run lint
+   bun run lint      # eslint + shellcheck
+   bun run lint:sh   # shellcheck only
+   bun run fix       # auto-fix what eslint can (shellcheck has no autofix)
    ```
 6. Format embedded shell scripts (`src/data/scripts/*.sh`, `install.sh`) after changes using [`shfmt`](https://github.com/mvdan/sh)
    ```zsh
