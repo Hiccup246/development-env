@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import gitDefaultsScript from "../data/scripts/git-defaults.sh" with { type: "file" };
 import { runLogged, runCapture, runScriptLogged } from "../runner.js";
 import { orThrow } from "../prompts.js";
@@ -8,7 +8,7 @@ import type { SetupTask } from "./registry.js";
 async function promptConfig(key: string, message: string): Promise<void> {
 	const current = await runCapture(`git config --global ${key}`);
 	const value = orThrow(
-		await p.text({
+		await clackPrompt.text({
 			message,
 			initialValue: current ?? "",
 			validate: (input) => ((input ?? "").trim().length === 0 ? "Required" : undefined),

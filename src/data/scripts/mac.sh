@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 # Configure macOS defaults for development
 
 # Safari developer settings

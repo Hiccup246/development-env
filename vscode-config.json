@@ -1,8 +1,8 @@
 {
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.detectIndentation": true,
-  "terminal.integrated.fontFamily": "Space Mono for Powerline",
-  "editor.fontFamily": "Fira Code",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+  "editor.fontFamily": "FiraCode Nerd Font",
   "editor.fontLigatures": true,
   "editor.formatOnPaste": false,
   "editor.inlineSuggest.enabled": true,

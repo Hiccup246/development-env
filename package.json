@@ -12,7 +12,8 @@
 		"start": "bun src/index.ts",
 		"build": "tsc",
 		"typecheck": "tsc --noEmit",
-		"lint": "eslint .",
+		"lint": "eslint . && bun run lint:sh",
+		"lint:sh": "shellcheck install.sh src/data/scripts/*.sh",
 		"fix": "eslint . --fix"
 	},
 	"dependencies": {

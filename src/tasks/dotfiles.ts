@@ -1,6 +1,6 @@
 import { mkdirSync, readFileSync, writeFileSync, chmodSync, existsSync, lstatSync } from "node:fs";
 import { homedir } from "node:os";
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import zshrcPath from "../data/dotfiles/zsh/.zshrc" with { type: "file" };
 import claudeSettingsPath from "../data/dotfiles/claude/.claude/settings.json.txt" with { type: "file" };
 import claudeMdPath from "../data/dotfiles/claude/.claude/CLAUDE.md" with { type: "file" };
@@ -75,19 +75,19 @@ export const dotfilesTask: SetupTask = {
 
 		if (existsSync(DOTFILES_DIR)) {
 			const overwrite = orThrow(
-				await p.confirm({
+				await clackPrompt.confirm({
 					message: "~/dotfiles already exists — overwrite with the embedded dotfiles?",
 					initialValue: false,
 				}),
 			);
 			if (!overwrite) {
-				p.log.info("Keeping existing ~/dotfiles as-is");
+				clackPrompt.log.info("Keeping existing ~/dotfiles as-is");
 				return;
 			}
 		}
 
 		materialize();
-		p.log.success(`Wrote dotfiles to ${DOTFILES_DIR}`);
+		clackPrompt.log.success(`Wrote dotfiles to ${DOTFILES_DIR}`);
 
 		await backupIfReal(".zshrc");
 		await backupIfReal(".claude/settings.json");
@@ -101,6 +101,6 @@ export const dotfilesTask: SetupTask = {
 			`stow --no-folding -d "${DOTFILES_DIR}" -t "$HOME" claude`,
 		);
 
-		p.log.success("Dotfiles stowed — ~/dotfiles is now the source of truth");
+		clackPrompt.log.success("Dotfiles stowed — ~/dotfiles is now the source of truth");
 	},
 };

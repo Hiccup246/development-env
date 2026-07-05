@@ -1,4 +1,4 @@
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import { runInteractive, runLogged, runCapture, commandExists } from "../runner.js";
 import { orThrow } from "../prompts.js";
 import type { SetupTask } from "./registry.js";
@@ -21,21 +21,21 @@ export const aiTask: SetupTask = {
 	hint: "Claude Code, caveman plugin, rtk",
 	async run() {
 		if (await commandExists("claude")) {
-			p.log.success("Claude Code already installed");
+			clackPrompt.log.success("Claude Code already installed");
 		} else {
 			await runLogged("Installing Claude Code", "curl -fsSL https://claude.ai/install.sh | bash");
 		}
 
 		if (await isLoggedIn()) {
-			p.log.success("Already logged in to Claude Code");
+			clackPrompt.log.success("Already logged in to Claude Code");
 		} else {
 			const login = orThrow(
-				await p.confirm({ message: "Log in to Claude Code now?", initialValue: true }),
+				await clackPrompt.confirm({ message: "Log in to Claude Code now?", initialValue: true }),
 			);
 			if (login) {
 				await runInteractive("claude auth login");
 			} else {
-				p.log.info("Skipping login — run 'claude auth login' later");
+				clackPrompt.log.info("Skipping login — run 'claude auth login' later");
 			}
 		}
 
@@ -48,7 +48,7 @@ export const aiTask: SetupTask = {
 		if (await commandExists("rtk")) {
 			await runLogged("Verifying rtk", "rtk --version && rtk gain");
 		} else {
-			p.log.warn("rtk not found on PATH — run the Homebrew task first");
+			clackPrompt.log.warn("rtk not found on PATH — run the Homebrew task first");
 		}
 	},
 };

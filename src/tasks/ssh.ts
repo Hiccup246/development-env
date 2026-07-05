@@ -1,4 +1,4 @@
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import { runLogged, runInteractive, runCapture, pathExists } from "../runner.js";
 import { orThrow } from "../prompts.js";
 import type { SetupTask } from "./registry.js";
@@ -11,7 +11,7 @@ export const sshTask: SetupTask = {
 	hint: "generate config, ssh-add key",
 	async run() {
 		const keyName = orThrow(
-			await p.text({
+			await clackPrompt.text({
 				message: "Name of your SSH key in ~/.ssh (exclude the .pub extension)",
 				validate: (input) => {
 					const trimmed = (input ?? "").trim();
@@ -38,7 +38,7 @@ export const sshTask: SetupTask = {
 		);
 
 		if (alreadyConfigured === "yes") {
-			p.log.success("github.com already configured in ~/.ssh/config");
+			clackPrompt.log.success("github.com already configured in ~/.ssh/config");
 		} else {
 			const block = ["", "Host github.com", "\tHostName github.com", `\t${identityLine}`, "\tIdentitiesOnly yes", ""].join(
 				"\n",
@@ -50,6 +50,6 @@ export const sshTask: SetupTask = {
 		}
 
 		await runInteractive(`ssh-add ~/.ssh/${keyName}`);
-		p.log.success("SSH configuration complete");
+		clackPrompt.log.success("SSH configuration complete");
 	},
 };

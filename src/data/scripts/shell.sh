@@ -1,14 +1,7 @@
-#!/bin/zsh
-# Configure shells: /etc/shells entries, oh-my-zsh, plugins, default shell
-
-add_to_etc_shells() {
-	local shell_path="$1"
-	sudo sh -c "grep -qxF '$shell_path' /etc/shells || echo '$shell_path' >> /etc/shells"
-}
-
-echo "Adding homebrew bash and zsh to /etc/shells — this needs your sudo password"
-add_to_etc_shells "/usr/local/bin/bash"
-add_to_etc_shells "/usr/local/bin/zsh"
+#!/bin/bash
+# Configure shells: oh-my-zsh, plugins, default shell
+# No sudo needed: /bin/zsh has been the macOS default since Catalina (2019) and is
+# already listed in /etc/shells, which is the only shell chsh targets below.
 
 touch ~/.hushlogin
 echo "✔ Suppressed login message"

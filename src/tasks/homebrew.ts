@@ -1,9 +1,9 @@
 import { readFileSync } from "node:fs";
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import installHomebrewScript from "../data/scripts/install-homebrew.sh" with { type: "file" };
 import homebrewPackagesPath from "../data/homebrew.txt" with { type: "file" };
 import homebrewCasksPath from "../data/homebrew-cask.txt" with { type: "file" };
-import { runLogged, runScriptLogged } from "../runner.js";
+import { runLogged, runScriptInteractive } from "../runner.js";
 import { orThrow } from "../prompts.js";
 import { linesFrom } from "../data/read.js";
 import type { SetupTask } from "./registry.js";
@@ -13,13 +13,15 @@ export const homebrewTask: SetupTask = {
 	label: "Homebrew",
 	hint: "packages + optional casks",
 	async run() {
-		await runScriptLogged("Checking Homebrew", readFileSync(installHomebrewScript, "utf8"));
+		// Interactive: Homebrew's own installer prompts for a sudo password on a
+		// completely fresh machine where /opt/homebrew doesn't exist yet.
+		await runScriptInteractive(readFileSync(installHomebrewScript, "utf8"));
 
 		const packages = linesFrom(readFileSync(homebrewPackagesPath, "utf8"));
 		await runLogged("Installing Homebrew packages", `brew install ${packages.join(" ")}`);
 
 		const installCasks = orThrow(
-			await p.confirm({
+			await clackPrompt.confirm({
 				message: "Install desktop GUI applications using Homebrew casks?",
 			}),
 		);
@@ -31,7 +33,7 @@ export const homebrewTask: SetupTask = {
 				`brew install --cask --appdir="/Applications" ${casks.join(" ")}`,
 			);
 		} else {
-			p.log.info("Skipping cask installs");
+			clackPrompt.log.info("Skipping cask installs");
 		}
 	},
 };

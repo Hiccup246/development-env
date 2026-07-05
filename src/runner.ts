@@ -1,8 +1,8 @@
-import { spawn } from "node:child_process";
+import { spawn, type ChildProcess } from "node:child_process";
 import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 
 export class CommandError extends Error {
 	constructor(
@@ -13,26 +13,13 @@ export class CommandError extends Error {
 	}
 }
 
-/**
- * Runs a shell command, streaming stdout/stderr into a clack taskLog.
- * The log collapses on success and stays expanded on failure.
- */
-export async function runLogged(title: string, command: string): Promise<void> {
-	const log = p.taskLog({ title });
+function waitForLoggedExit(child: ChildProcess, title: string, label: string): Promise<void> {
+	const log = clackPrompt.taskLog({ title });
 
-	await new Promise<void>((resolve, reject) => {
-		const child = spawn(command, {
-			shell: true,
-			stdio: ["ignore", "pipe", "pipe"],
-		});
+	child.stdout?.on("data", (chunk: Buffer) => log.message(chunk.toString().trimEnd()));
+	child.stderr?.on("data", (chunk: Buffer) => log.message(chunk.toString().trimEnd()));
 
-		child.stdout?.on("data", (chunk: Buffer) => {
-			log.message(chunk.toString().trimEnd());
-		});
-		child.stderr?.on("data", (chunk: Buffer) => {
-			log.message(chunk.toString().trimEnd());
-		});
-
+	return new Promise<void>((resolve, reject) => {
 		child.on("error", (err) => reject(err));
 		child.on("close", (code) => {
 			if (code === 0) {
@@ -40,10 +27,32 @@ export async function runLogged(title: string, command: string): Promise<void> {
 				resolve();
 			} else {
 				log.error(`${title} failed`, { showLog: true });
-				reject(new CommandError(command, code));
+				reject(new CommandError(label, code));
 			}
 		});
 	});
+}
+
+function waitForInteractiveExit(child: ChildProcess, label: string): Promise<void> {
+	return new Promise<void>((resolve, reject) => {
+		child.on("error", (err) => reject(err));
+		child.on("close", (code) => {
+			if (code === 0) {
+				resolve();
+			} else {
+				reject(new CommandError(label, code));
+			}
+		});
+	});
+}
+
+/**
+ * Runs a shell command, streaming stdout/stderr into a clack taskLog.
+ * The log collapses on success and stays expanded on failure.
+ */
+export async function runLogged(title: string, command: string): Promise<void> {
+	const child = spawn(command, { shell: true, stdio: ["ignore", "pipe", "pipe"] });
+	await waitForLoggedExit(child, title, command);
 }
 
 /**
@@ -52,17 +61,36 @@ export async function runLogged(title: string, command: string): Promise<void> {
  * auth flows that a piped taskLog cannot drive.
  */
 export async function runInteractive(command: string): Promise<void> {
-	await new Promise<void>((resolve, reject) => {
-		const child = spawn(command, { shell: true, stdio: "inherit" });
-		child.on("error", (err) => reject(err));
-		child.on("close", (code) => {
-			if (code === 0) {
-				resolve();
-			} else {
-				reject(new CommandError(command, code));
-			}
-		});
-	});
+	const child = spawn(command, { shell: true, stdio: "inherit" });
+	await waitForInteractiveExit(child, command);
+}
+
+/**
+ * Runs embedded script content through bash via stdin, streaming into a taskLog.
+ * No temp file needed: safe only for scripts that never read from stdin themselves.
+ */
+export async function runScriptLogged(title: string, script: string): Promise<void> {
+	const child = spawn("bash", [], { stdio: ["pipe", "pipe", "pipe"] });
+	child.stdin?.end(script);
+	await waitForLoggedExit(child, title, "<script>");
+}
+
+/**
+ * Runs embedded script content with the terminal attached directly. Writes to a
+ * real temp file rather than piping via stdin, because piping would hand the
+ * script's own stdin (needed for things like a `sudo` password prompt) straight
+ * to the script content instead of the terminal.
+ */
+export async function runScriptInteractive(script: string): Promise<void> {
+	const dir = mkdtempSync(join(tmpdir(), "devenv-"));
+	const file = join(dir, "script.sh");
+	writeFileSync(file, script, { mode: 0o755 });
+	try {
+		const child = spawn("bash", [file], { stdio: "inherit" });
+		await waitForInteractiveExit(child, file);
+	} finally {
+		rmSync(file, { force: true, recursive: true });
+	}
 }
 
 /** Runs a quick command and resolves to its trimmed stdout, or null on failure. */
@@ -95,31 +123,4 @@ export async function commandExists(bin: string): Promise<boolean> {
 export async function pathExists(path: string): Promise<boolean> {
 	const result = await runCapture(`[ -e "${path}" ] && echo yes`);
 	return result === "yes";
-}
-
-function writeTempScript(script: string): string {
-	const dir = mkdtempSync(join(tmpdir(), "devenv-"));
-	const file = join(dir, "script.sh");
-	writeFileSync(file, script, { mode: 0o755 });
-	return file;
-}
-
-/** Runs embedded script content as a real .sh file through runLogged. */
-export async function runScriptLogged(title: string, script: string): Promise<void> {
-	const file = writeTempScript(script);
-	try {
-		await runLogged(title, `bash "${file}"`);
-	} finally {
-		rmSync(file, { force: true, recursive: true });
-	}
-}
-
-/** Runs embedded script content as a real .sh file through runInteractive. */
-export async function runScriptInteractive(script: string): Promise<void> {
-	const file = writeTempScript(script);
-	try {
-		await runInteractive(`bash "${file}"`);
-	} finally {
-		rmSync(file, { force: true, recursive: true });
-	}
 }

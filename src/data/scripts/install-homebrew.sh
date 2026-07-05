@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/bash
 # Install Homebrew itself if missing, then update
 
 if command -v brew > /dev/null 2>&1; then

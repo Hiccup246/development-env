@@ -34,7 +34,7 @@ FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting must come at the end
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions history-substring-search docker docker-compose gradle zsh-syntax-highlighting)
 
 # https://github.com/zsh-users/zsh-completions
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src

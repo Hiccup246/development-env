@@ -1,11 +1,11 @@
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import { taskRegistry, type SetupTask } from "./tasks/registry.js";
 
 type TaskOutcome = "ran" | "skipped" | "failed";
 
 function exitOnCancel(value: unknown): asserts value is Exclude<unknown, symbol> {
-	if (p.isCancel(value)) {
-		p.cancel("Setup aborted");
+	if (clackPrompt.isCancel(value)) {
+		clackPrompt.cancel("Setup aborted");
 		process.exit(0);
 	}
 }
@@ -16,9 +16,9 @@ async function runTask(task: SetupTask): Promise<TaskOutcome> {
 			await task.run();
 			return "ran";
 		} catch (err) {
-			p.log.error(err instanceof Error ? err.message : String(err));
+			clackPrompt.log.error(err instanceof Error ? err.message : String(err));
 
-			const choice = await p.select({
+			const choice = await clackPrompt.select({
 				message: `${task.label} failed. What now?`,
 				options: [
 					{ value: "retry", label: "Retry" },
@@ -31,14 +31,14 @@ async function runTask(task: SetupTask): Promise<TaskOutcome> {
 			if (choice === "retry") continue;
 			if (choice === "skip") return "failed";
 
-			p.cancel("Setup aborted");
+			clackPrompt.cancel("Setup aborted");
 			process.exit(0);
 		}
 	}
 }
 
 async function guidedSetup(outcomes: Map<string, TaskOutcome>): Promise<void> {
-	const selected = await p.multiselect({
+	const selected = await clackPrompt.multiselect({
 		message: "Select setup tasks to run",
 		options: taskRegistry.map((task) => ({
 			value: task.id,
@@ -63,7 +63,7 @@ async function guidedSetup(outcomes: Map<string, TaskOutcome>): Promise<void> {
 
 async function pickTasks(outcomes: Map<string, TaskOutcome>): Promise<void> {
 	for (;;) {
-		const choice = await p.select({
+		const choice = await clackPrompt.select({
 			message: "Pick a task to run",
 			options: [
 				...taskRegistry.map((task) => ({
@@ -99,19 +99,19 @@ function printOutro(outcomes: Map<string, TaskOutcome>): void {
 		const counts = { ran: 0, skipped: 0, failed: 0 };
 		for (const outcome of outcomes.values()) counts[outcome]++;
 
-		p.note(MANUAL_STEPS, "Manual configuration");
-		p.outro(
+		clackPrompt.note(MANUAL_STEPS, "Manual configuration");
+		clackPrompt.outro(
 			`Setup complete — ${counts.ran} ran, ${counts.skipped} skipped, ${counts.failed} failed`,
 		);
 	} else {
-		p.outro("Bye");
+		clackPrompt.outro("Bye");
 	}
 }
 
 async function main() {
-	p.intro("development-env setup");
+	clackPrompt.intro("development-env setup");
 
-	const mode = await p.select({
+	const mode = await clackPrompt.select({
 		message: "What do you want to do?",
 		options: [
 			{

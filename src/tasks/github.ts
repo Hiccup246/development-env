@@ -1,4 +1,4 @@
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import { runLogged, runCapture } from "../runner.js";
 import { orThrow } from "../prompts.js";
 import type { SetupTask } from "./registry.js";
@@ -7,7 +7,7 @@ const REPO_FILTER =
 	'.[] | select(.private==false) | select(.fork==false) | select(.archived==false) | .ssh_url';
 
 async function cloneReposForUser(username: string): Promise<void> {
-	const s = p.spinner();
+	const s = clackPrompt.spinner();
 	s.start(`Fetching repos for ${username}`);
 
 	const urls = await runCapture(
@@ -22,7 +22,7 @@ async function cloneReposForUser(username: string): Promise<void> {
 
 	const repoUrls = urls.split("\n").filter(Boolean);
 	if (repoUrls.length === 0) {
-		p.log.info(`No public, non-fork, non-archived repos found for ${username}`);
+		clackPrompt.log.info(`No public, non-fork, non-archived repos found for ${username}`);
 		return;
 	}
 
@@ -38,7 +38,7 @@ export const githubTask: SetupTask = {
 	async run() {
 		for (;;) {
 			const username = orThrow(
-				await p.text({
+				await clackPrompt.text({
 					message: "GitHub username to clone all public, non-archived, non-fork repos from",
 					validate: (input) => ((input ?? "").trim().length === 0 ? "Required" : undefined),
 				}),
@@ -47,7 +47,7 @@ export const githubTask: SetupTask = {
 			await cloneReposForUser(username);
 
 			const again = orThrow(
-				await p.confirm({
+				await clackPrompt.confirm({
 					message: "Clone repos from another GitHub user?",
 					initialValue: false,
 				}),

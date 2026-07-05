@@ -1,4 +1,4 @@
-import * as p from "@clack/prompts";
+import * as clackPrompt from "@clack/prompts";
 import { runLogged, runInteractive, runCapture, pathExists } from "../runner.js";
 import { orThrow } from "../prompts.js";
 import type { SetupTask } from "./registry.js";
@@ -33,7 +33,7 @@ async function installJava(): Promise<void> {
 	if (!(await pathExists("$HOME/.sdkman"))) {
 		await runInteractive('curl -s "https://get.sdkman.io" | bash');
 	}
-	p.log.step("Launching sdkman — pick a Java candidate when prompted");
+	clackPrompt.log.step("Launching sdkman — pick a Java candidate when prompted");
 	await runInteractive('bash -c \'source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install java\'');
 }
 
@@ -65,7 +65,7 @@ export const languagesTask: SetupTask = {
 	hint: "pyenv, fnm, rbenv, sdkman, clojure, deno, go",
 	async run() {
 		const selected = orThrow(
-			await p.multiselect<LanguageId>({
+			await clackPrompt.multiselect<LanguageId>({
 				message: "Which languages do you want to install?",
 				options: [
 					{ value: "python", label: "Python", hint: "via pyenv" },
