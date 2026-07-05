@@ -1,7 +1,8 @@
+import { readFileSync } from "node:fs";
 import * as p from "@clack/prompts";
+import gitDefaultsScript from "../data/scripts/git-defaults.sh" with { type: "file" };
 import { runLogged, runCapture, runScriptLogged } from "../runner.js";
 import { orThrow } from "../prompts.js";
-import { readData } from "../data/read.js";
 import type { SetupTask } from "./registry.js";
 
 async function promptConfig(key: string, message: string): Promise<void> {
@@ -21,7 +22,7 @@ export const gitTask: SetupTask = {
 	label: "Git config",
 	hint: "email, name, editor, difftool",
 	async run() {
-		await runScriptLogged("Applying git defaults", readData("scripts/git-defaults.sh"));
+		await runScriptLogged("Applying git defaults", readFileSync(gitDefaultsScript, "utf8"));
 		await promptConfig("user.email", "Global git email");
 		await promptConfig("user.name", "Global git name (Firstname Lastname)");
 		await promptConfig("user.displayname", "Global git display name (Firstname Lastname)");

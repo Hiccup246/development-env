@@ -1,6 +1,7 @@
+import { readFileSync } from "node:fs";
 import * as p from "@clack/prompts";
+import shellScript from "../data/scripts/shell.sh" with { type: "file" };
 import { runScriptInteractive } from "../runner.js";
-import { readData } from "../data/read.js";
 import type { SetupTask } from "./registry.js";
 
 export const shellTask: SetupTask = {
@@ -8,7 +9,7 @@ export const shellTask: SetupTask = {
 	label: "Shells",
 	hint: "homebrew bash + zsh, oh-my-zsh, plugins",
 	async run() {
-		await runScriptInteractive(readData("scripts/shell.sh"));
+		await runScriptInteractive(readFileSync(shellScript, "utf8"));
 		p.log.success("Shell configuration complete");
 	},
 };

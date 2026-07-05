@@ -1,6 +1,11 @@
 import { mkdirSync, readFileSync, writeFileSync, chmodSync, existsSync, lstatSync } from "node:fs";
 import { homedir } from "node:os";
 import * as p from "@clack/prompts";
+import zshrcPath from "../data/dotfiles/zsh/.zshrc" with { type: "file" };
+import claudeSettingsPath from "../data/dotfiles/claude/.claude/settings.json.txt" with { type: "file" };
+import claudeMdPath from "../data/dotfiles/claude/.claude/CLAUDE.md" with { type: "file" };
+import rtkMdPath from "../data/dotfiles/claude/.claude/RTK.md" with { type: "file" };
+import statuslineScriptPath from "../data/dotfiles/claude/.claude/statusline-command.sh" with { type: "file" };
 import { runLogged, commandExists } from "../runner.js";
 import { orThrow } from "../prompts.js";
 import type { SetupTask } from "./registry.js";
@@ -11,23 +16,11 @@ interface DotfileEntry {
 	executable?: boolean;
 }
 
-const ZSHRC = readFileSync(new URL("../data/dotfiles/zsh/.zshrc", import.meta.url), "utf8");
-const CLAUDE_SETTINGS = readFileSync(
-	new URL("../data/dotfiles/claude/.claude/settings.json", import.meta.url),
-	"utf8",
-);
-const CLAUDE_MD = readFileSync(
-	new URL("../data/dotfiles/claude/.claude/CLAUDE.md", import.meta.url),
-	"utf8",
-);
-const RTK_MD = readFileSync(
-	new URL("../data/dotfiles/claude/.claude/RTK.md", import.meta.url),
-	"utf8",
-);
-const STATUSLINE_SCRIPT = readFileSync(
-	new URL("../data/dotfiles/claude/.claude/statusline-command.sh", import.meta.url),
-	"utf8",
-);
+const ZSHRC = readFileSync(zshrcPath, "utf8");
+const CLAUDE_SETTINGS = readFileSync(claudeSettingsPath, "utf8");
+const CLAUDE_MD = readFileSync(claudeMdPath, "utf8");
+const RTK_MD = readFileSync(rtkMdPath, "utf8");
+const STATUSLINE_SCRIPT = readFileSync(statuslineScriptPath, "utf8");
 
 const PACKAGES: Record<string, DotfileEntry[]> = {
 	zsh: [{ relativePath: ".zshrc", content: ZSHRC }],
