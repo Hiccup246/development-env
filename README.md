@@ -1,7 +1,5 @@
 # 🧙 Mr James Watts Premium Install 🧙
 
-
-
 ![](https://img.shields.io/github/license/Hiccup246/development-env)
 ![](https://img.shields.io/github/languages/code-size/Hiccup246/development-env)
 [![Style Check](https://github.com/Hiccup246/development-env/actions/workflows/style-check.yml/badge.svg)](https://github.com/Hiccup246/development-env/actions/workflows/style-check.yml)
