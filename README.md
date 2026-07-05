@@ -1,6 +1,10 @@
 # 👨‍💻 development-env
 ![](https://img.shields.io/github/license/Hiccup246/development-env)
 ![](https://img.shields.io/github/languages/code-size/Hiccup246/development-env)
+[![Style Check](https://github.com/Hiccup246/development-env/actions/workflows/style-check.yml/badge.svg)](https://github.com/Hiccup246/development-env/actions/workflows/style-check.yml)
+[![Release](https://github.com/Hiccup246/development-env/actions/workflows/release.yml/badge.svg)](https://github.com/Hiccup246/development-env/actions/workflows/release.yml)
+![](https://img.shields.io/github/v/release/Hiccup246/development-env)
+![](https://img.shields.io/badge/runtime-bun-000000?logo=bun)
 
 A personal Macintosh development environment setup tool — an interactive terminal app (built with [clack](https://github.com/bombshell-dev/clack)) that configures a fresh Mac for development.
 
