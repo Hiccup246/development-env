@@ -36,7 +36,7 @@ This repository contains a TypeScript CLI, compiled to a standalone binary, that
    chmod +x devenv
    ./devenv
    ```
-2. Follow the interactive prompts. Pick **Guided setup** to run every task in recommended order (uncheck any you want to skip), or **Pick individual tasks** to run one at a time.
+2. Follow the interactive prompts. Pick **Guided setup** to run every task in recommended order (uncheck any you want to skip), or **Pick individual tasks** to run one at a time. Two more options sit on the main menu independent of setup, for reconfiguring anytime after install: **Clone GitHub user's repos** and **Reconfigure git identity**.
 
 <br>
 
@@ -95,7 +95,7 @@ Open the codiff app and run `Codiff > Install Terminal Helper` from the app menu
 <br>
 
 # 🔧 Troubleshooting
-If a task fails, the app offers to retry, skip, or abort right there — no need to start over. The most common source of trouble is the Shells task, since oh-my-zsh and sudo prompts are involved. To fix:
+If a task fails, the app offers to retry, skip, or abort right there — no need to start over. The most common source of trouble is the Shells task, since it installs oh-my-zsh from a remote script. To fix:
 - Retry the task from the failure menu
 - Re-run the Dotfiles task — it backs up any conflicting `~/.zshrc` before restoring the managed one via [stow](https://www.gnu.org/software/stow/)
 
@@ -137,6 +137,11 @@ Package lists (in `src/data/`):
 - `homebrew-cask.txt` - All GUI applications
 - `homebrew.txt` - All homebrew packages
 
+## Standalone actions
+Available on the main menu, independent of setup — safe to run anytime, not just during initial install:
+- **Clone GitHub user's repos** — prompts for a username, clones all their public, non-fork, non-archived repos
+- **Reconfigure git identity** — re-prompts for global git email, name, and display name
+
 ## Mac appstore installations
 - Flycut
 
@@ -144,6 +149,7 @@ Package lists (in `src/data/`):
 - `zsh-autosuggestions` plugin
 - `zsh-syntax-highlighting` plugin
 - `zsh-completions` plugin
+- `history-substring-search`, `docker`, `docker-compose`, `gradle` (bundled oh-my-zsh plugins)
 - FiraCode Nerd Font (provides the powerline glyphs the agnoster theme and status line use)
 
 ## Language version managers
