@@ -16,3 +16,17 @@ stivo.tailwind-fold
 YoavBls.pretty-ts-errors
 esbenp.prettier-vscode
 semanticdiff.semanticdiff
+astro-build.astro-vscode
+bierner.markdown-mermaid
+bradlc.vscode-tailwindcss
+celianriboulet.webvalidator
+christian-kohler.npm-intellisense
+docker.docker
+expo.vscode-expo-tools
+ms-azuretools.vscode-containers
+msjsdiag.vscode-react-native
+prisma.prisma
+redhat.vscode-yaml
+toba.vsfire
+typescriptteam.native-preview
+vscode-icons-team.vscode-icons
