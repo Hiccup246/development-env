@@ -1,4 +1,6 @@
-# 👨‍💻 development-env
+# 🧙 Mr James Watts Premium Install 🧙
+
+
 
 ![](https://img.shields.io/github/license/Hiccup246/development-env)
 ![](https://img.shields.io/github/languages/code-size/Hiccup246/development-env)
@@ -7,6 +9,8 @@
 ![](https://img.shields.io/github/v/release/Hiccup246/development-env)
 ![](https://img.shields.io/badge/runtime-bun-000000?logo=bun)
 [![](https://img.shields.io/badge/release-checksum_verified-brightgreen)](#%EF%B8%8F-usage)
+
+![App screenshot](app-screenshot.webp)
 
 A personal Macintosh development environment setup tool — an interactive terminal app (built with [clack](https://github.com/bombshell-dev/clack)) that configures a fresh Mac for development.
 
