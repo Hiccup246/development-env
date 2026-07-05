@@ -22,7 +22,7 @@ This repository contains a TypeScript CLI, compiled to a standalone binary, that
      ```zsh
      pbcopy < ~/.ssh/id_ecdsa.pub
      ```
-1. Run the installer — no prerequisites needed, this works on a completely fresh Mac
+1. Run the installer. No prerequisites needed, this works on a completely fresh Mac
    ```zsh
    curl -fsSL https://raw.githubusercontent.com/Hiccup246/development-env/main/install.sh | sh
    ```
@@ -95,7 +95,7 @@ Open the codiff app and run `Codiff > Install Terminal Helper` from the app menu
 <br>
 
 # 🔧 Troubleshooting
-If a task fails, the app offers to retry, skip, or abort right there — no need to start over. The most common source of trouble is the Shells task, since it installs oh-my-zsh from a remote script. To fix:
+If a task fails, the app offers to retry, skip, or abort, no need to start over. The most common source of trouble are the shell tasks, since they install oh-my-zsh from a remote script. To fix:
 - Retry the task from the failure menu
 - Re-run the Dotfiles task — it backs up any conflicting `~/.zshrc` before restoring the managed one via [stow](https://www.gnu.org/software/stow/)
 
