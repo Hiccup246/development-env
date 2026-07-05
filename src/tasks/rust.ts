@@ -1,12 +1,20 @@
 import * as p from "@clack/prompts";
+import { runInteractive } from "../runner.js";
+import { orThrow } from "../prompts.js";
 import type { SetupTask } from "./registry.js";
 
 export const rustTask: SetupTask = {
 	id: "rust",
 	label: "Rust",
 	hint: "rustup",
-	run() {
-		p.log.warn("rust task not yet implemented");
-		return Promise.resolve();
+	async run() {
+		const install = orThrow(await p.confirm({ message: "Install Rust using rustup?" }));
+
+		if (!install) {
+			p.log.info("Skipping Rust install");
+			return;
+		}
+
+		await runInteractive("rustup-init");
 	},
 };

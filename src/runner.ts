@@ -87,3 +87,9 @@ export async function commandExists(bin: string): Promise<boolean> {
 	const result = await runCapture(`command -v ${bin}`);
 	return result !== null && result.length > 0;
 }
+
+/** Checks whether a file or directory exists at the given path. */
+export async function pathExists(path: string): Promise<boolean> {
+	const result = await runCapture(`[ -e "${path}" ] && echo yes`);
+	return result === "yes";
+}

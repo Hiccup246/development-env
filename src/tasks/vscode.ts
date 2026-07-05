@@ -1,12 +1,16 @@
-import * as p from "@clack/prompts";
+import { runLogged } from "../runner.js";
+import { readDataLines } from "../data/read.js";
 import type { SetupTask } from "./registry.js";
 
 export const vscodeTask: SetupTask = {
 	id: "vscode",
 	label: "VSCode extensions",
 	hint: "installs extension list",
-	run() {
-		p.log.warn("vscode task not yet implemented");
-		return Promise.resolve();
+	async run() {
+		const extensions = readDataLines("vscode-extensions.txt");
+
+		for (const extension of extensions) {
+			await runLogged(`Installing ${extension}`, `code --install-extension ${extension}`);
+		}
 	},
 };

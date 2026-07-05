@@ -1,12 +1,11 @@
-import * as p from "@clack/prompts";
+import { runLogged } from "../runner.js";
 import type { SetupTask } from "./registry.js";
 
 export const appstoreTask: SetupTask = {
 	id: "appstore",
 	label: "App Store apps",
 	hint: "Flycut",
-	run() {
-		p.log.warn("appstore task not yet implemented");
-		return Promise.resolve();
+	async run() {
+		await runLogged("Installing Flycut via mas", "mas install 442160987");
 	},
 };
