@@ -1,0 +1,19 @@
+# AI & review tooling
+nkzw-tech/tap/codiff
+
+# Fonts
+font-fira-code-nerd-font
+
+spotify
+discord
+visual-studio-code
+google-chrome
+postman
+firefox
+docker
+microsoft-teams
+slack
+bitwarden
+raycast
+iterm2
+alt-tab
