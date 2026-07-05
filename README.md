@@ -162,9 +162,9 @@ Available on the main menu, independent of setup — safe to run anytime, not ju
 
 ## AI & review tooling
 - [Claude Code](https://claude.ai/code) CLI, with login handled interactively
-- [caveman](https://github.com/JuliusBrussee/caveman) Claude Code plugin
-- [rtk](https://www.rtk-ai.app/) — token-optimized CLI proxy
-- [codiff](https://github.com/nkzw-tech/codiff) — local diff review tool
+- [Caveman](https://github.com/JuliusBrussee/caveman) Claude Code plugin
+- [Rtk](https://www.rtk-ai.app/)  token-optimized CLI proxy
+- [Codiff](https://github.com/nkzw-tech/codiff) local diff review tool
 
 ## Dotfiles
 Managed with [GNU Stow](https://www.gnu.org/software/stow/). The Dotfiles task writes `~/dotfiles` (from the app's embedded copies) and symlinks:
