@@ -10,19 +10,23 @@
 	"scripts": {
 		"dev": "bun --watch src/index.ts",
 		"start": "bun src/index.ts",
-		"build": "tsc",
-		"typecheck": "tsc --noEmit",
+		"test": "bun test",
+		"typecheck": "tsc",
 		"lint": "eslint . && bun run lint:sh",
 		"lint:sh": "shellcheck install.sh src/data/scripts/*.sh",
-		"fix": "eslint . --fix"
+		"fix": "eslint . --fix",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
 	},
 	"dependencies": {
 		"@clack/prompts": "^1.7.0"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
+		"@types/bun": "^1.3.14",
 		"@types/node": "^26.1.0",
 		"eslint": "^10.6.0",
+		"prettier": "^3.9.4",
 		"typescript": "^6.0.3",
 		"typescript-eslint": "^8.62.1"
 	}

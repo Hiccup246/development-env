@@ -34,7 +34,7 @@ async function installJava(): Promise<void> {
 		await runInteractive('curl -s "https://get.sdkman.io" | bash');
 	}
 	clackPrompt.log.step("Launching sdkman — pick a Java candidate when prompted");
-	await runInteractive('bash -c \'source "$HOME/.sdkman/bin/sdkman-init.sh" && sdk install java\'');
+	await runInteractive("bash -c 'source \"$HOME/.sdkman/bin/sdkman-init.sh\" && sdk install java'");
 }
 
 async function installClojure(): Promise<void> {
@@ -59,6 +59,13 @@ const INSTALLERS: Record<LanguageId, () => Promise<void>> = {
 	go: installGo,
 };
 
+/**
+ * Lets you tick which programming languages to install. Each language gets
+ * its own version manager rather than a bare install, so you can switch
+ * versions later: pyenv (Python), fnm (Node), rbenv (Ruby), sdkman (Java).
+ * Clojure and Deno/Go are installed straight via Homebrew. Picking Clojure
+ * auto-selects Java too, since Clojure needs a JVM to run.
+ */
 export const languagesTask: SetupTask = {
 	id: "languages",
 	label: "Languages",

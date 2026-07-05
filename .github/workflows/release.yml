@@ -11,9 +11,9 @@ jobs:
   release:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
 
       - run: bun install --frozen-lockfile
 
@@ -23,8 +23,12 @@ jobs:
       - name: Build x64 binary
         run: bun build --compile --target=bun-darwin-x64 src/index.ts --outfile devenv-darwin-x64
 
-      - uses: softprops/action-gh-release@v2
+      - name: Generate checksums
+        run: shasum -a 256 devenv-darwin-arm64 devenv-darwin-x64 > checksums.txt
+
+      - uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2.6.2
         with:
           files: |
             devenv-darwin-arm64
             devenv-darwin-x64
+            checksums.txt

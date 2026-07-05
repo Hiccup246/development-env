@@ -5,6 +5,12 @@ import type { SetupTask } from "./registry.js";
 
 const SAFE_KEY_NAME = /^[a-zA-Z0-9._-]+$/;
 
+/**
+ * Wires up an existing SSH key for use with GitHub. Asks for the key's name
+ * (it must already exist in ~/.ssh — this task doesn't generate one), adds a
+ * `Host github.com` entry to ~/.ssh/config pointing at it if not already
+ * there, then adds the key to the SSH agent with ssh-add.
+ */
 export const sshTask: SetupTask = {
 	id: "ssh",
 	label: "SSH config",
@@ -40,9 +46,14 @@ export const sshTask: SetupTask = {
 		if (alreadyConfigured === "yes") {
 			clackPrompt.log.success("github.com already configured in ~/.ssh/config");
 		} else {
-			const block = ["", "Host github.com", "\tHostName github.com", `\t${identityLine}`, "\tIdentitiesOnly yes", ""].join(
-				"\n",
-			);
+			const block = [
+				"",
+				"Host github.com",
+				"\tHostName github.com",
+				`\t${identityLine}`,
+				"\tIdentitiesOnly yes",
+				"",
+			].join("\n");
 			await runLogged(
 				"Adding github.com host to ~/.ssh/config",
 				`cat >> ~/.ssh/config <<'EOF'\n${block}\nEOF`,

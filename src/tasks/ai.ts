@@ -15,6 +15,11 @@ async function isLoggedIn(): Promise<boolean> {
 	}
 }
 
+/**
+ * Sets up AI dev tooling: installs the Claude Code CLI if it's missing, logs
+ * you in (optional), installs the "caveman" Claude Code plugin, and checks
+ * that rtk (installed earlier by the Homebrew task) is working.
+ */
 export const aiTask: SetupTask = {
 	id: "ai",
 	label: "AI tooling",

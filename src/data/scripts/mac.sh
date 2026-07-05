@@ -26,5 +26,12 @@ if xcode-select -p > /dev/null 2>&1; then
 	echo "✔ Xcode command line tools already installed"
 else
 	echo "Installing Xcode command line tools..."
+	# --install only opens a GUI dialog and returns immediately; wait for the
+	# actual install to finish so later tasks (Homebrew) don't race it
 	xcode-select --install
+	echo "Complete the Xcode command line tools dialog — waiting for it to finish..."
+	until xcode-select -p > /dev/null 2>&1; do
+		sleep 5
+	done
+	echo "✔ Xcode command line tools installed"
 fi

@@ -59,11 +59,21 @@ function isRealFileOrDir(path: string): boolean {
 
 async function backupIfReal(targetRelPath: string): Promise<void> {
 	const target = `${homedir()}/${targetRelPath}`;
-	if (isRealFileOrDir(target)) {
-		await runLogged(`Backing up ~/${targetRelPath}`, `mv "${target}" "${target}.bak"`);
-	}
+	if (!isRealFileOrDir(target)) return;
+
+	// A fresh suffix each time: `mv` onto an existing .bak directory would
+	// nest the target inside it instead of replacing it
+	const backup = existsSync(`${target}.bak`) ? `${target}.bak-${Date.now()}` : `${target}.bak`;
+	await runLogged(`Backing up ~/${targetRelPath}`, `mv "${target}" "${backup}"`);
 }
 
+/**
+ * Installs this repo's personal config files (dotfiles) onto the machine.
+ * Two steps: first it writes the embedded copies out to ~/dotfiles, backing
+ * up anything real that's already at the destination; then it uses `stow` to
+ * symlink them into place in the home directory, so ~/dotfiles stays the one
+ * place you'd edit them going forward.
+ */
 export const dotfilesTask: SetupTask = {
 	id: "dotfiles",
 	label: "Dotfiles",

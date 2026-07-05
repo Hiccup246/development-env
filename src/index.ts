@@ -13,11 +13,13 @@ function banner(text: string): string {
 	return `${bg}${fg} ${text} ${reset}`;
 }
 
-function exitOnCancel(value: unknown): asserts value is Exclude<unknown, symbol> {
+/** Unwraps a clack prompt result, exiting cleanly on cancel. Tasks use orThrow instead so the retry menu can catch it. */
+function exitOnCancel<T>(value: T | symbol): T {
 	if (clackPrompt.isCancel(value)) {
 		clackPrompt.cancel("Setup aborted");
 		process.exit(0);
 	}
+	return value;
 }
 
 async function runTask(task: SetupTask): Promise<TaskOutcome> {
@@ -28,15 +30,16 @@ async function runTask(task: SetupTask): Promise<TaskOutcome> {
 		} catch (err) {
 			clackPrompt.log.error(err instanceof Error ? err.message : String(err));
 
-			const choice = await clackPrompt.select({
-				message: `${task.label} failed. What now?`,
-				options: [
-					{ value: "retry", label: "Retry" },
-					{ value: "skip", label: "Skip and continue" },
-					{ value: "abort", label: "Abort setup" },
-				],
-			});
-			exitOnCancel(choice);
+			const choice = exitOnCancel(
+				await clackPrompt.select({
+					message: `${task.label} failed. What now?`,
+					options: [
+						{ value: "retry", label: "Retry" },
+						{ value: "skip", label: "Skip and continue" },
+						{ value: "abort", label: "Abort setup" },
+					],
+				}),
+			);
 
 			if (choice === "retry") continue;
 			if (choice === "skip") return "failed";
@@ -48,19 +51,20 @@ async function runTask(task: SetupTask): Promise<TaskOutcome> {
 }
 
 async function guidedSetup(outcomes: Map<string, TaskOutcome>): Promise<void> {
-	const selected = await clackPrompt.multiselect({
-		message: "Select setup tasks to run",
-		options: taskRegistry.map((task) => ({
-			value: task.id,
-			label: task.label,
-			hint: task.hint,
-		})),
-		initialValues: taskRegistry.map((task) => task.id),
-		required: false,
-	});
-	exitOnCancel(selected);
+	const selected = exitOnCancel(
+		await clackPrompt.multiselect({
+			message: "Select setup tasks to run",
+			options: taskRegistry.map((task) => ({
+				value: task.id,
+				label: task.label,
+				hint: task.hint,
+			})),
+			initialValues: taskRegistry.map((task) => task.id),
+			required: false,
+		}),
+	);
 
-	const selectedIds = new Set(selected as string[]);
+	const selectedIds = new Set(selected);
 
 	for (const task of taskRegistry) {
 		if (!selectedIds.has(task.id)) {
@@ -73,18 +77,19 @@ async function guidedSetup(outcomes: Map<string, TaskOutcome>): Promise<void> {
 
 async function pickTasks(outcomes: Map<string, TaskOutcome>): Promise<void> {
 	for (;;) {
-		const choice = await clackPrompt.select({
-			message: "Pick a task to run",
-			options: [
-				...taskRegistry.map((task) => ({
-					value: task.id,
-					label: task.label,
-					hint: task.hint,
-				})),
-				{ value: "__exit", label: "Done — return to summary" },
-			],
-		});
-		exitOnCancel(choice);
+		const choice = exitOnCancel(
+			await clackPrompt.select({
+				message: "Pick a task to run",
+				options: [
+					...taskRegistry.map((task) => ({
+						value: task.id,
+						label: task.label,
+						hint: task.hint,
+					})),
+					{ value: "__exit", label: "Done — return to summary" },
+				],
+			}),
+		);
 
 		if (choice === "__exit") return;
 
@@ -129,29 +134,30 @@ async function main() {
 	clackPrompt.intro(banner("🧙 Mr James Watts Premium Install 🧙"));
 
 	for (;;) {
-		const mode = await clackPrompt.select({
-			message: "What do you want to do?",
-			options: [
-				{
-					value: "guided",
-					label: "Guided setup",
-					hint: "runs everything in recommended order",
-				},
-				{ value: "pick", label: "Pick individual tasks" },
-				{
-					value: "github-clone",
-					label: "Clone GitHub user's repos",
-					hint: "independent of setup — run anytime",
-				},
-				{
-					value: "git-identity",
-					label: "Reconfigure git identity",
-					hint: "independent of setup — run anytime",
-				},
-				{ value: "exit", label: "Exit" },
-			],
-		});
-		exitOnCancel(mode);
+		const mode = exitOnCancel(
+			await clackPrompt.select({
+				message: "What do you want to do?",
+				options: [
+					{
+						value: "guided",
+						label: "Guided setup",
+						hint: "runs everything in recommended order",
+					},
+					{ value: "pick", label: "Pick individual tasks" },
+					{
+						value: "github-clone",
+						label: "Clone GitHub user's repos",
+						hint: "independent of setup — run anytime",
+					},
+					{
+						value: "git-identity",
+						label: "Reconfigure git identity",
+						hint: "independent of setup — run anytime",
+					},
+					{ value: "exit", label: "Exit" },
+				],
+			}),
+		);
 
 		if (mode === "exit") {
 			clackPrompt.outro("Ta ta for now! ✨");

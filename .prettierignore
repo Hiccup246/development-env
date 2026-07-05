@@ -1,0 +1,6 @@
+# Payload files installed onto the target machine — must stay byte-exact
+src/data/dotfiles/
+vscode-config.json
+
+bun.lock
+dist/

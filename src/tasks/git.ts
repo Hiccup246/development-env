@@ -24,6 +24,11 @@ export async function configureGitIdentity(): Promise<void> {
 	await promptConfig("user.displayname", "Global git display name (Firstname Lastname)");
 }
 
+/**
+ * Configures git globally: applies fixed defaults (VSCode as diff/merge tool,
+ * SSH instead of HTTPS for github.com, etc. — see git-defaults.sh) and then
+ * prompts for your identity (name, email, display name).
+ */
 export const gitTask: SetupTask = {
 	id: "git",
 	label: "Git config",
