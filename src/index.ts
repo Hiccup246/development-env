@@ -121,12 +121,12 @@ function printOutro(outcomes: Map<string, TaskOutcome>): void {
 			`Setup complete — ${counts.ran} ran, ${counts.skipped} skipped, ${counts.failed} failed`,
 		);
 	} else {
-		clackPrompt.outro("Ta ta for now!");
+		clackPrompt.outro("Ta ta for now! ✨");
 	}
 }
 
 async function main() {
-	clackPrompt.intro(banner("Mr James Watts Premium Install"));
+	clackPrompt.intro(banner("🧙 Mr James Watts Premium Install 🧙"));
 
 	for (;;) {
 		const mode = await clackPrompt.select({
@@ -154,7 +154,7 @@ async function main() {
 		exitOnCancel(mode);
 
 		if (mode === "exit") {
-			clackPrompt.outro("Ta ta for now!");
+			clackPrompt.outro("Ta ta for now! ✨");
 			return;
 		}
 
