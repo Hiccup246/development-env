@@ -5,6 +5,14 @@ import { configureGitIdentity } from "./tasks/git.js";
 
 type TaskOutcome = "ran" | "skipped" | "failed";
 
+/** Wraps text in a mauve background band, matching the statusline's Catppuccin Macchiato palette. */
+function banner(text: string): string {
+	const bg = "\x1b[48;2;198;160;246m";
+	const fg = "\x1b[38;2;36;39;58m";
+	const reset = "\x1b[0m";
+	return `${bg}${fg} ${text} ${reset}`;
+}
+
 function exitOnCancel(value: unknown): asserts value is Exclude<unknown, symbol> {
 	if (clackPrompt.isCancel(value)) {
 		clackPrompt.cancel("Setup aborted");
@@ -113,16 +121,12 @@ function printOutro(outcomes: Map<string, TaskOutcome>): void {
 			`Setup complete — ${counts.ran} ran, ${counts.skipped} skipped, ${counts.failed} failed`,
 		);
 	} else {
-		clackPrompt.outro("Bye");
+		clackPrompt.outro("Ta ta for now!");
 	}
 }
 
 async function main() {
-	clackPrompt.intro("development-env setup");
-	clackPrompt.note(
-		"Clone GitHub user's repos, Reconfigure git identity",
-		"If you need to reconfigure after install",
-	);
+	clackPrompt.intro(banner("Mr James Watts Premium Install"));
 
 	for (;;) {
 		const mode = await clackPrompt.select({
@@ -150,7 +154,7 @@ async function main() {
 		exitOnCancel(mode);
 
 		if (mode === "exit") {
-			clackPrompt.outro("Bye");
+			clackPrompt.outro("Ta ta for now!");
 			return;
 		}
 
