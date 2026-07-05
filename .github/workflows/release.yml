@@ -1,0 +1,30 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+
+      - run: bun install --frozen-lockfile
+
+      - name: Build arm64 binary
+        run: bun build --compile --target=bun-darwin-arm64 src/index.ts --outfile devenv-darwin-arm64
+
+      - name: Build x64 binary
+        run: bun build --compile --target=bun-darwin-x64 src/index.ts --outfile devenv-darwin-x64
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            devenv-darwin-arm64
+            devenv-darwin-x64
