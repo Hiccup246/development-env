@@ -205,7 +205,7 @@ Package lists (in `src/data/`):
 
 Available on the main menu, independent of setup — safe to run anytime, not just during initial install:
 
-- **Clone GitHub user's repos** — prompts for a username, clones all their public, non-fork, non-archived repos
+- **Clone GitHub user's repos** — prompts for a target directory (default `~/Dev`) and a username, clones all their public, non-fork, non-archived repos
 - **Reconfigure git identity** — re-prompts for global git email, name, and display name
 
 ## Mac appstore installations
@@ -253,6 +253,7 @@ Managed with [GNU Stow](https://www.gnu.org/software/stow/). The Dotfiles task w
 - Sets finder to search in current directory
 - Unhides the library directory
 - Sets mac doc to not display recent apps
+- Installs Xcode Command Line Tools
 
 <br>
 
