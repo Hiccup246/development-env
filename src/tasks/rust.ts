@@ -13,7 +13,7 @@ export const rustTask: SetupTask = {
 	hint: "rustup",
 	async run() {
 		if (await commandExists("rustup")) {
-			clackPrompt.log.info("Rust already installed (rustup found), skipping");
+			clackPrompt.log.success("Rust already installed (rustup found), skipping");
 			return;
 		}
 
